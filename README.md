@@ -15,12 +15,12 @@ Current file structure (subject to change):
 1. Do not post any PHI
     - Self explanatory.
     - This includes screenshots.
-    - **If a pull request has PHI in it, do not submit the pull request. Once it’s on GitHub, assume that it cannot be taken off and that it’s visible to anyone on the internet.**
+    - **If a pull request has PHI in it, do not submit the pull request. Once it's on GitHub, assume that it cannot be taken off and that it's visible to anyone on the internet.**
 2. Do not post proprietary NetSmart content
     - Example of non-proprietary code:
 
     ```
-    getFormElement(‘actual_date’);
+    getFormElement('actual_date');
     ```
     - Example of proprietary code:
 
