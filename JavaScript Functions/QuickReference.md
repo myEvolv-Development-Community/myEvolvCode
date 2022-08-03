@@ -2,6 +2,9 @@
 Some funcions that you can use for various projecs
 
 ### Code:
+|Item|Description|Example|
+|----|-----------|-------|
+|var|short for Variable. This allows you to declare the value of things you are going to use in your script|var mydata = getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description');|
 ```
 var : short for Variable. This allows you to declare the value of things you are going to use in your script
 EX: var mydata = getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description');
