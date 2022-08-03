@@ -24,20 +24,11 @@ if (/** my condition */) {
 ```
 
 ### Function Arguments
-|Argument       |Definition |Data Type|
-|---            |---        |---      |
-|No arguments|X|X|
-
+This function takes no arguments.
 
 ### Implementation Details
 1. Define the function.
 2. Call the function.
 
-### End-User Details
-Here is where I explain what end users should see if everything works.
-
 ## Credits:
 Credit to Netsmart Technologies for the rad window portion of this code.
-
-### To-Do
-If there is a known issue or edge case still to work out, describe it here.
