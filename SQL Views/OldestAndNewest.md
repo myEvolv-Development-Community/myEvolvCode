@@ -1,14 +1,10 @@
-/*
+## What you want to do
+
 Get the oldest and most recent record for each group.
 
-This is a rather basic example based on the event_log table.
-    The "sub" alias below could be joined to any table that event_log could be joined to.
+## View Definition
 
-In this case:
-    groups are represented by people_id and
-    age of each record is filtered using date_entered.
-*/
-
+```
 SELECT
     sub.event_log_id,
     sub.people_id,
@@ -26,3 +22,12 @@ WHERE
     )
 -- Optional ORDER BY clause
 ORDER BY sub.date_entered
+```
+
+## Other Details
+
+The "sub" alias below could be joined to any table that event_log could be joined to.
+
+In this case:
+    - groups are represented by people_id and
+    - age of each record is filtered using date_entered.
