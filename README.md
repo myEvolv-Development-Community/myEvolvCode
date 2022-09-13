@@ -43,26 +43,27 @@ Members of the myEvolv community are free to browse this code repository, but if
 ## Guidelines for submitting code
 If anyone wishes to submit new code to the repository, they should follow the below steps. In GitHub, each change to a repository is referred to as a "commit". A commit cannot be changed once it's made, so be sure your code is ready before you submit it.
 
-1. Navigate to the location in the file system that you want your code to be stored.
-2. Find the "Add file" button, then click "create new file"
+1. Log into your GitHub account. You will need an account to make contributions to the repository.
+2. Navigate to the location in the file system that you want your code to be stored.
+3. Find the "Add file" button, then click "create new file"
 
 ![Add new file](assets/img/add-file.png)
 
-3. You will be presented with a text editor of sorts. From there, you can:
+4. You will be presented with a text editor of sorts. From there, you can:
     - Enter a name for your file (javascript files should end in ".js", SQL files should end in ".sql", and text / documentation files should end in ".md")
         - File endings determine the language and highlighting for the whole page. If you want to create a formatted page with code and images/descriptive text, end the file name with ".md" and use embedded code blocks
     - Type out or paste in your code.
 
 ![Edit new file](assets/img/edit-new-file.png)
 
-4. Once your code is entered and formatted the way you want, add a commit title/subject line and an extended description.
+5. Once your code is entered and formatted the way you want, add a commit title/subject line and an extended description.
 
 ![Propose new file](assets/img/propose-new-file.png)
 
 -
     - "Create new file" is currently the default commit title. This is acceptable, but it's recommended to be a little more specific. A properly formed subject line should always be able to complete the following sentence: "If applied, this commit will <your subject line here>".
     - While a commit description is optional, it's highly recommended that you add it. Don't assume that your code is self-evident / self-explanatory!
-5. When you're sure your commit is ready, hit the big green "Propose new file" button to notify the Stewards that you have a contribution to make!
+6. When you're sure your commit is ready, hit the big green "Propose new file" button to notify the Stewards that you have a contribution to make!
 
 ***
 
