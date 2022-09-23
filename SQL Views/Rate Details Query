@@ -1,6 +1,7 @@
 ### What You Want to Do:
 View expected billing rates for services by service details including program prodiving service.
 
+
 ### View Definition
 ```sql
 select distinct
