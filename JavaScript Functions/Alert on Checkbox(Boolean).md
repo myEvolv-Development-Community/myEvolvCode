@@ -8,7 +8,10 @@ Box is not checked by default or staff checks the box<br>
 `if(this.checked){alert2(‘NOTE: By checking this box you are indicating that this was a telehealth session.’)}`<br><br>
 
 This one will trigger every time the box is checked or unckecked<br>
-`alert2(‘WARNING: This field has a direct impact on billing’)`
+`alert2(‘WARNING: This field has a direct impact on billing’)`<br><br>
+
+If the boolean field is on a sub form, you can use this code instead<br>
+`window.parent.window.alert('This is the alert message');`
 
 ### Details
 This code is placed into the **On Click Script** box on the checkbox/boolean field you want to trigger the alert
