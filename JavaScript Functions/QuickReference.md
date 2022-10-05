@@ -11,6 +11,8 @@ Some funcions that you can use for various projecs
 |setFormElement(); |Sets the value of a field |`setFormElement('udf_regularstring', mydata);`|
 |setElementFromXML(formXML,); | Sets the XML layer- used for field that are marked not-modifiable/not-visible |`setElementFromXML(formXML, 'is_telehealth', 'on')`|
 |getParentFormElement(); | Grabs the value from a parent form for use in a sub form|`getParentFormElement('activity_type');`
+|self.getElementFromXML(currentRowXML, )|Gets data from the current row of a subform line|`self.getElementFromXML(currentRowXML,'udf_collpicklist');`
+|setSubFormElement(this.form, )| Sets the value of a field in the same line of a form |`setSubFormElement(this.form, 'local_worker_supervisor', desc);`
 |programPS| If a form is in Service Etry, putting this value in the program_providing_service field will default the field to the current enrolled program for the service. You can plug this into Javascript formulas to reference the program providing service. | `getDataValue('primary_worker_assignment_view', 'people_id', parentValue, 'staff_id', 'end_date is null and program_info_id = "programPS"')`
 |sitePS| If a form is in Service Etry, putting this value in the site_providing_service field will default the field to the current enrolled program for the service. You can plug this into Javascript formulas to reference the site providing service | example
 |eventID|You can plug this into Javascript formulas/form fields to reference the event_definition_id of the form.| example
