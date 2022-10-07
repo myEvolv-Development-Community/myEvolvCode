@@ -18,7 +18,7 @@ Some functions that you can use for various projects.
 | `eventID` | You can plug this into Javascript formulas/form fields to reference the event_definition_id of the form. |  example
 | `staffID` | You can plug this into Javascript formulas/form fields to reference the staff_id of the form |  example
 | `workerID` |  You can plug this into Javascript formulas to reference the current staff that is interacting with the form |  `if (formAction == 'EDIT'){{setFormElement('staff_id', workerID);}}`
-| `&#124;&#124;` |  Use as "Or" when using mutiple javascript formulas |  `getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yes'; \|\| getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Maybe'`
+| `\|\|` |  Use as "Or" when using mutiple javascript formulas |  `getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yes'; \|\| getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Maybe'`
 | `&&` |  Use as "And" when usning mutiple javascript functions | `getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yes'; && getDataValue('user_defined_lut2', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yellow'`
 | `===` |  In myEvolv NX javascript uses 3 `=` when you want the formula to mean "Equals" |  `getFormElement('udf_refcl') === 'A1B03084-BC60-4867-98A4-2AF7F2D3879F'`
 | `!` |  Use this when you want to mean "Not"  |  `getFormElement('udf_refcl') !== 'A1B03084-BC60-4867-98A4-2AF7F2D3879F'`
