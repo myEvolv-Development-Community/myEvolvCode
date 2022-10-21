@@ -80,4 +80,6 @@ var where_clause = `actual_date = \\'${actual_date}\\' and event_definition_id =
   }) screened positive for suicide risk on ${
   actual_date
   }. Please follow-up on this case immediately.</p>`;
+  
+  // resulting message: Some Client (ID# 12345) screened positive for suicide risk on 2022-01-01 12:00. Please follow-up on this case immediately.
 ```
