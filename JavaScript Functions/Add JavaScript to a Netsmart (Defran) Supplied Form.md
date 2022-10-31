@@ -53,4 +53,13 @@ var is_program_ended = !Util.isNullOrEmpty(getFormElement('end_date'));
   }
 )
 `;
+
+/* As an alternative approach, define the variable and put the script in the corresponding box you want to execute as normal. 
+(e.g., if you want something to execute when a field changes, but the script in the variables On Change script. 
+Then, put the following in the variable's On Load script to directly copy the variable's On Change script to the field's
+This approach sacrifices flexibility for simplicity. */
+
+Form.getFormLineByColumnName('end_date').onchangeEvent = Form.getFormLineByColumnName('new_variable').onchangeEvent
+
+
 ```
