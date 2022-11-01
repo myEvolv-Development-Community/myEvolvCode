@@ -43,8 +43,11 @@ Members of the myEvolv community are free to browse this code repository, but if
 ## How to submit code
 If anyone wishes to submit new code to the repository, they should follow the below steps. In GitHub, each change to a repository is referred to as a "commit". A commit cannot be changed once it's made, so be sure your code is ready before you submit it.
 
-### A quick word about Markdown
-Most of the code in this repository is stored in the Markdown format (formatting cheat sheet [here](https://www.markdownguide.org/cheat-sheet/)). Submission templates are in each folder and start with `0` so they appear at the top of the file list. The template file for SQL Views, for example, is located [here](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/0-SQL%20View%20Template.md). Click the button with brackets `<>` to view the raw text of the file. Feel free to use this template to format your submissions.
+
+
+>### A quick word about Markdown
+> Most of the code in this repository is stored in the Markdown format (formatting cheat sheet [here](https://www.markdownguide.org/cheat-sheet/)). Submission templates are in each folder and start with `0` so they appear at the top of the file list. The template file for SQL Views, for example, is located [here](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/0-SQL%20View%20Template.md). Click the button with brackets `<>` to view the raw text of the file. Feel free to use this template to format your submissions.
+
 
 1. Log into your GitHub account. You will need an account to make contributions to the repository.
 2. Navigate to the location in the file system that you want your code to be stored.
@@ -67,7 +70,13 @@ Most of the code in this repository is stored in the Markdown format (formatting
 -
     - "Create new file" is currently the default commit title. This is acceptable, but it's recommended to be a little more specific. A properly formed subject line should always be able to complete the following sentence: "If applied, this commit will <your subject line here>".
     - While a commit description is optional, it's highly recommended that you add it. Don't assume that your code is self-evident / self-explanatory!
+
 6. When you're sure your commit is ready, hit the big green "Propose new file" button to notify the Stewards that you have a contribution to make!
+    - Note: At this point, a few extra steps may be required to propose your new file depending on the level of access to the repository you have. If you want to read more about what is going on behind the scenes, scroll down to the section labeled "**On pull requests**". If not, continue reading - you're almost done!
+        - If you are presented with a screen that looks like the one below, simply click "Create pull request".
+        - You should now be looking at the screen for creating a new pull request. Optionally, enter a title and description for your pull request, then click "Create pull request".
+
+![Compare branches, then open a pull request](assets/img/compare-then-pull.png)
 
 ## How to edit a file
 While browsing this repository, you may come across a file that you wish to make changes to. Adding new information, clarification, typos, or anything else you think will be helpful is certainly welcome. Follow the below steps to edit a file currently stored in this repository (you will need a GitHub account to do this).
@@ -92,16 +101,31 @@ In most GitHub repositories, issues are used as a ticketing system. Here, they w
 
 ***
 
-## Current file structure (subject to change):
+## On pull requests
+Those who built Git and GitHub thought carefully about how to protect repositories, especially public ones. Only those who have the right permissions can make direct changes to a repository.
 
-- README.md
-- Form Design/
-    - Exports/
-    - Form Overview/
-- How-To Guides/
-    - assets/
-        - images/
-- JavaScript Functions/
-- SQL Views/
-    - assets/
-        - images/
+> What about those who do not have access? They should be allowed to at least suggest changes to a repository!
+
+The solution is to allow anyone to create a copy of the repository they wish to modify and store the copy **under their own account**. This copy is referred to in GitHub language as a "fork". Users can then edit their fork of the repository as much as they want and suggest their changes to the primary repository when they are ready.
+
+
+
+
+***
+
+## Current file structure (subject to change):
+```
+myEvolvCode
+├── assets
+│   └── img
+├── Form Design
+│   ├── Exports
+│   └── Form Overview
+├── How-To Guides
+│   └── assets
+│       └── images
+├── JavaScript Functions
+└── SQL Views
+    └── assets
+        └── images
+```
