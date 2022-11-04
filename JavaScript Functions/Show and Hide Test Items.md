@@ -35,10 +35,10 @@ function showTestItem(test_header_code, question_code){
 }
 ```
 ### Function Arguments
-|Argument       |Definition |Data Type|
-|---            |---        |---      |
+|Argument       |Definition |
+|---            |---        |
 |test_header_code |The test_header_code for the question to hide.|
-|question_code|Tell what this argument should represent.|The output_code (question_code) for the test item as specified in Test Designer.|
+|question_code|The output_code (question_code) for the test item as specified in Test Designer.|
 
 
 ### Implementation Details
