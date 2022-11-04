@@ -65,4 +65,4 @@ for (let i = 1; i <= 9; i++) {
   }
 ```
 
-## Thanks to Lori Parks for field-testing this idea.
+## Thanks to Lori Parks for collaborating and field-testing this idea.
