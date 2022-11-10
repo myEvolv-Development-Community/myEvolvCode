@@ -3,35 +3,51 @@
 ### Code to Do It:
 ```javascript
 function getTestQuestionByCode(test_header_code, question_code) {
-  return Form. // The Form currently open
-    formObject.
-    FormLines. // The form elements on the form. Tests and assessments occupy one form line each
-    find(fl => // Search through the form lines ("fl")
-      fl.
-      testValue?.  // Look inside each form line's testValue property. The next property may or may not exist, so we look with ?.
-      test_header_code === test_header_code). // Check whether the test_header_code for the embedded test matches our searched code (again, if it exists.)
-    testValue. // Take the matching testValue entry
-    Questions. // Look inside the array of questions for the test
-    find(q => q.output_code === question_code) // find a question with an output_code value that matches our question_code
+  try{
+    var test = Form. // The Form currently open
+      formObject.
+      FormLines. // The form elements on the form. Tests and assessments occupy one form line each
+      find(fl => // Search through the form lines ("fl")
+        fl.
+        testValue?.  // Look inside each form line's testValue property. The next property may or may not exist, so we look with ?.
+        test_header_code === test_header_code)
+    if (!test) {throw `No test was found with the code '${test_header_code}'`}
+  } catch(missing_test_error) {
+    return console.error(missing_test_error)
+  }
+  
+  try {
+    var question = test.
+      testValue. // Take the matching testValue entry
+      Questions. // Look inside the array of questions for the test
+      find(q => q.output_code === question_code) // find a question with an output_code value that matches our question_code
+    if (!question) {throw `No question was found with the code '${question_code}' in test '${test_header_code}'`}
+  } catch(missing_question_error) {
+    return console.error(missing_question_error)
+  }
+  return question
 }
 
 function hideTestItem(test_header_code, question_code){
-  var question_element = $( // Search this HTML element using JQuery
-    getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
-    getField() // Get the associated HTML element and give it to JQuery
-  ).
-  parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
-  hide() // Hide the question
+  try {
+    var question_element = $( // Search this HTML element using JQuery
+      getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
+      getField() // Get the associated HTML element and give it to JQuery
+    ).
+    parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
+    hide()
+  } catch {}
 }
 
 function showTestItem(test_header_code, question_code){
-  var question_element = $( // Search this HTML element using JQuery
-    getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
-    getField() // Get the associated HTML element and give it to JQuery
-  ).
-  parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
-  show() // Make the selected question visible on the form
-}
+  try {
+    var question_element = $( // Search this HTML element using JQuery
+      getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
+      getField() // Get the associated HTML element and give it to JQuery
+    ).
+    parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
+    show()
+  } catch {}
 }
 ```
 ### Function Arguments
@@ -57,12 +73,42 @@ hideTestItem("myTest", "secret_question")
 // Reveal the hidden test item
 showTestItem("myTest", "secret_question")
 
-// Hide multiple items with a loop
-for (let i = 1; i <= 9; i++) {
-  let test = "test"
-  let question = "test_question_" + i
-  hideTestItem(test, question)
+// Hide multiple items with iteration
+// All items belong to the same test
+// Questions come in groups of 5 questions:
+// First question indicates whether documentation needed (Yes or No)
+// Remaining 4 questions hide on initial load, are revealed if documentation indicated as needed
+// All items have question codes with a numeric suffix, e.g., doc1, doc2, doc3
+
+var number_of_items = 20; // Total number of each category to document (test includes doc1 through doc20, etc)
+var test   = "my_test_header_code";
+var answer = "Yes"; // If documentation item is checked "Yes", questions will display
+var need   = "doc"; //  Code for item indicating need to document other factors
+const itemsToHide = ["loc", "intv", "resp", "remk"]; // Array of question code prefixes to show/hide according to respective doc item
+
+for (let i = 1; i <= number_of_items; i++) { // Loop through 20 sections
+  createTestAnswerOnClick(
+    test, // test header code defined above
+    need + i, // creates prefix of doc1, doc2, etc according to loop counter
+    () => {
+      if (!Form.getTestAnswerValue(test, need + i, answer)) {
+        for (let item of itemsToHide) { // Loop through items to show/hide
+          hideTestItem(test, item + i);
+        }
+      } else {
+        for (let item of itemsToHide) {
+          showTestItem(test, item + i);
+        }
+      }
+    }
+  );
+  try {var hide_this_item = !Form.getTestAnswerValue(test, need + i, answer) } catch {var hide_this_item = false}; // Check whether the doc item is marked yes at load. If unchecked or not loaded, default to showing the remaining items.
+  if (hide_this_item)) { // On initial form load, hide these items if documentation not indicated as needed
+    for (let item of itemsToHide) { // Loop through items to show/hide
+      hideTestItem(test, item + i);
+    }
   }
+}
 ```
 
 ## Thanks to Lori Parks for collaborating and field-testing this idea.
