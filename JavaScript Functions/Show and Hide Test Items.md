@@ -1,5 +1,7 @@
 ### What You Want to Do:
 
+Make individual test/assessment items on a form visible or hidden. See the example at the bottom for defaulting test items to hidden, and then to reveal them when certain criteria are met.
+
 ### Code to Do It:
 ```javascript
 function getTestQuestionByCode(test_header_code, question_code) {
