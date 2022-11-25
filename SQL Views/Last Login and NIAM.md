@@ -47,7 +47,7 @@ FROM rpt_staff_view rsv
 JOIN (SELECT staff_id, is_administrator, billing_staff_credentials, allow_multiple_logins, staff_license FROM staff_view)sv ON rsv.staff_id = sv.staff_id
 JOIN (SELECT staff_id, is_all_programs, is_all_worker_roles, use_eid_authentication, eid_username, id_number FROM staff)s ON rsv.staff_id = s.staff_id
 JOIN (SELECT people_id, dea_license_number, medicaid_number, agency_other_id_number  FROM people)p ON rsv.people_id = p.people_id
-JOIN use_log_staff_summary_view ssv ON rsv.staff_id = ssv.staff_id
+LEFT OUTER JOIN use_log_staff_summary_view ssv ON rsv.staff_id = ssv.staff_id
 
 WHERE rsv.job_title != 'Evolv Support' 
 ```
