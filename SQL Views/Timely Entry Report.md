@@ -215,16 +215,16 @@ and the user-defined `timeliness_cutoff` field is added to the form, marked visi
 
 The form under the Agency-Program Setup family should include the previous form as a subform.
 
-![An example form under Agency-Program Setup](/SQL%20Functions/assets/images/Agency-Program%20Setup%20-%20Timeliness.png "An example form under Agency-Program Setup, the subform is labeled 'Services'")
+![An example form under Agency-Program Setup](/SQL%20Views/assets/images/Agency-Program%20Setup%20-%20Timeliness.png "An example form under Agency-Program Setup, the subform is labeled 'Services'")
 
 Add this custom form to a new formset member under the Agency Setup module, and the Agency Formset.
   * Make the custom form from the Agency-Program Setup Form Family the default form for the formset member.
   * Add the new formset member to the required navigation scheme.
 
-![The new formset member setup](/SQL%20Functions/assets/images/Formset%20Maintenance%20-%20Timeliness.png "Setup for the new Formset Member")
+![The new formset member setup](/SQL%20Views/assets/images/Formset%20Maintenance%20-%20Timeliness.png "Setup for the new Formset Member")
 
 The final result for setup should look like the following:
-![Timely Entry setup form in use](/SQL%20Functions/assets/images/Timely%20Entry%20Criteria.png "Timely Entry setup form in use")
+![Timely Entry setup form in use](/SQL%20Views/assets/images/Timely%20Entry%20Criteria.png "Timely Entry setup form in use")
 
 There are a variety of ways to set security for this report, including:
  * By client the staff can acces
