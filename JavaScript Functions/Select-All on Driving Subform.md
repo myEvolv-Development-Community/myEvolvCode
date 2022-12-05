@@ -1,7 +1,7 @@
 # Add a select-all button to subforms that have a driving formLine.
 _Matt Wills - Cayuga Centers - v2_
 ### Description
-This script creates a checkbox next to driving subforms, and when clicked, selects all the items in the driving subform. Supports unchecking. _THis code will not work in Internet Explorer!_
+This script creates a checkbox next to driving subforms, and when clicked, selects all the items in the driving subform. Supports unchecking. _This code will not work in Internet Explorer!_
 
 ### Step 1
 Place the following code into the After Load area of the **_parent_** form.
