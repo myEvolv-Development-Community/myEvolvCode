@@ -70,7 +70,7 @@ addCheckbox = function (caption) {
                 id="caption_selectAll_${subformFL.formLinesId}"
                 title="${label}"
               >
-                ${label.text()}
+                ${label}
               </label>
               <input 
                 id="selectAll_${subformFL.formLinesId}"
