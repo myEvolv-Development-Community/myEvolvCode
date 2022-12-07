@@ -115,4 +115,6 @@ for (let i = 1; i <= number_of_items; i++) { // Loop through 20 sections
 }
 ```
 
+An example form export can be found [here](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/Form%20Design/Exports/Show-Hide%20Test%20Items.json) (NX-compatible only)
+
 ## Thanks to Lori Parks for collaborating and field-testing this idea.
