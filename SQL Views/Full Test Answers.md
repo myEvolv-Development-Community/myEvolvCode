@@ -30,7 +30,8 @@ group_profile.profile_name as office_responsible,
 test_setup_header.test_header_name,
 test_group.test_setup_details_caption as question_group,
 test_group.test_setup_details_order as question_group_order,
-test_setup_details.test_setup_details_caption as question_caption,
+test_setup_details.test_setup_details_caption as question_caption
+test_setup_details.output_code as question_code,
 test_details_na_reason.description as na_reason,
 test_setup_details.test_setup_details_order as question_order,
 test_setup_details_type.description as data_type,
@@ -41,7 +42,7 @@ concat(test_details_answers.lut_description,
   test_details_answers.narrative, 
   test_details_answers.numeric_value) as question_answer,
 test_details_answers.is_checked,
-test_setup_details_answers.output_code, 
+test_setup_details_answers.output_code as answer_code, 
 test_details_answers.remarks
 from event_log
 inner join test_header on test_header.event_log_id = event_log.event_log_id
