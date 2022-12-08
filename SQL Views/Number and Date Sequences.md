@@ -17,7 +17,7 @@ SELECT
 lower.number + 32 * middle.number + 1024 * upper.number AS number, -- use multiplication to get numbers from 0 to 32767 (up to 2 ^ 15)
 CAST (DATEADD(dd, -1 * (lower.number + 32 * middle.number + 1024 * upper.number), GETDATE()) AS DATE) AS reference_date -- count back from today to 32767 days ago (about 85.5 years)
 FROM sequence AS lower
-CROSS JOIN sequence AS middle -- use cross join to get all possible multiples of the numbers from 0 to 31
+, sequence AS middle -- use cross join to get all possible multiples of the numbers from 0 to 31, use comma to force this join to happen first
 CROSS JOIN sequence AS upper
 ```
 
