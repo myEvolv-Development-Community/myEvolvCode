@@ -74,4 +74,4 @@ event_log.is_deleted = 0
 ```
 
 ### Other Details
-Assessment results is not available as a data source for custom reports, so link this to the Client Services Report on `event_definition_id`
+Assessment results is not available as a data source for custom reports, so link this to the Client Services Report on `event_log_id`
