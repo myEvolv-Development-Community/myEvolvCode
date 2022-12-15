@@ -3,7 +3,7 @@ Export results of a test/assessment event in wide format, where every question i
 
 ### View Definition
 ```sql
-select top 100
+select
 event_log.event_log_id,
 '<root>' + replace(
   replace(
