@@ -58,7 +58,7 @@ inner join test_header on test_header.event_log_id = event_log.event_log_id
 ### Other Details
 This query collects all the questions and responses for an event into a single field called `test_info`, which is formatted as XML and can be parsed into multiple columns using other software. The order of questions and answers in the field should mimic the ordering in the event form, and can handle multiple subtests included in the same form. The result set can be joined to other data sources, such as `report_logi_client_services` on the `event_log_id` column.
 
-The query uses question codes to generate XML element IDs (all IDs have a letter 'q' attached to the front to ensure they result in valid XML). It uses `FOR XML PATH` to combine the results of questions, and string concatenation to combine the results into a specific format. `char(171)` and `char(187)` are guillemet characters ("French quotes") as placeholders for < and > and are replaced in the final step.
+The query uses question codes to generate XML element IDs (all IDs have a letter 'q' attached to the front to ensure they result in valid XML). It uses `FOR XML PATH` to combine the results of questions, and string concatenation to combine the results into a specific format. `char(171)` and `char(187)` are guillemet characters (« and », "French quotes") as placeholders for < and > and are replaced in the final step.
 
 
 ### Example Output
