@@ -66,3 +66,6 @@ The query uses question codes to generate XML element IDs (all IDs have a letter
 | ---------- | ----------- |
 | 00000000-0000-0000-0000-000000000000| \<root\>\<q1\>42</q1\>\<q2\>Yes\</q2\>\<q3_breakfast\>1\</q3_breakfast/>/<q3_lunch\>0\</q3_lunch/>/<q3_dinner\>1<\/q3.dinner\>\</root\>     |
   
+### Expanding the test_info column into multiple columns per question
+
+You can use a variety of tools to parse the XML inside `test_info` to create multiple columns. Here, we will show how to use the [Parse XML](https://support.microsoft.com/en-us/office/parse-text-as-json-or-xml-power-query-7436916b-210a-4299-83dd-8531a1d5e945) functionality in Microsoft Excel to split the data into columns.
