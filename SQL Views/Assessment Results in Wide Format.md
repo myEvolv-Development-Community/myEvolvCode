@@ -66,5 +66,5 @@ Implementation details and usage to come.
 ### Example Output
 | event_log_id | test_info|
 | ---------- | ----------- |
-| 00000000-0000-0000-0000-000000000000| <root><q1>42</q1><q2>Yes</q2><q3.breakfast>1</q3.breakfast><q3.lunch>0</q3.lunch><q3.dinner>1</q3.dinner></root>     |
+| 00000000-0000-0000-0000-000000000000| \<root\>\<q1\>42</q1\>\<q2\>Yes\</q2\>\<q3_breakfast\>1\</q3_breakfast/>/<q3_lunch\>0\</q3_lunch/>/<q3_dinner\>1<\/q3.dinner\>\</root\>     |
   
