@@ -43,7 +43,6 @@ event_log.event_log_id,
       inner join test_details on test_details.test_header_id = test_header.test_header_id and test_details.test_setup_details_id = test_setup_details.test_setup_details_id
       inner join test_details_answers on test_details_answers.test_details_id = test_details.test_details_id and test_details_answers.test_setup_details_answers_id = test_setup_details_answers.test_setup_details_answers_id
       where test_header.event_log_id = event_log.event_log_id
-      --and case when left(test_setup_details_type.sc_code , 6) = 'SINGLE' then test_details_answers.is_checked else 1 end = 1
       and rtrim(test_setup_details_type.sc_code) <> 'SUB_REPORT'
       and form_lines.form_header_id = event_definition.form_header_id
       order by form_lines.line_order, test_group.test_setup_details_order, test_setup_details.test_setup_details_order, test_setup_details_answers.test_setup_answers_order
