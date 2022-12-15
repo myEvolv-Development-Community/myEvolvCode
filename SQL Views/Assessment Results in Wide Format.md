@@ -70,12 +70,19 @@ The query uses question codes to generate XML element IDs (all IDs have a letter
 
 You can use a variety of tools to parse the XML inside `test_info` to create multiple columns. Here, we will show how to use the [Parse XML](https://support.microsoft.com/en-us/office/parse-text-as-json-or-xml-power-query-7436916b-210a-4299-83dd-8531a1d5e945) functionality in Microsoft Excel to split the data into columns.
 
-1. Run the report and save the results as a CSV file. Open the file in Excel and click Data > Get & Transform Data > From Table/Range ![Click From Table/Range](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-1-From-Table-Range.png)
-2. Ensure the columns containing data are selected and click OK. ![Select the data for the table](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-2-Create-Table.png)
-3. A Power Query editor window will open. Select the test_info column and click Transform > Text Column > Parse > XML ![Use Parse XML in Power Query Editor](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-3-Parse-XML.png)
-4. The XML will be converted into a nested table structure. Optionally, you can remove errors (typically caused by all questions in the assessment being unanswered) by right-clicking the test_info column header and selecting Remove Errors ![Optionally remove errors from the result](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-4-Remove-Errors.png)
-5. Click Transform > Structured Column > Expand to convert the test_info column into multiple columns![Click Expand](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-5-Expand.png)
-6. A menu will appear with a prompt to select columns. Make sure all columns are selected, and click OK![Confirm columns to include](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-6-Select-Columns.png)
-7. Click Home > Close > Close & Load to close the editor window and to load the data into an Excel sheet.![Close & Load](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-7-Close-and-Load.png)
+1. Run the report and save the results as a CSV file. Open the file in Excel and click Data > Get & Transform Data > From Table/Range 
+![Click From Table/Range](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-1-From-Table-Range.png)
+3. Ensure the columns containing data are selected and click OK.  
+![Select the data for the table](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-2-Create-Table.png)
+4. A Power Query editor window will open. Select the test_info column and click Transform > Text Column > Parse > XML 
+![Use Parse XML in Power Query Editor](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-3-Parse-XML.png)
+5. The XML will be converted into a nested table structure. Optionally, you can remove errors (typically caused by all questions in the assessment being unanswered) by right-clicking the test_info column header and selecting Remove Errors 
+![Optionally remove errors from the result](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-4-Remove-Errors.png)
+6. Click Transform > Structured Column > Expand to convert the test_info column into multiple columns
+![Click Expand](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-5-Expand.png)
+7. A menu will appear with a prompt to select columns. Make sure all columns are selected, and click OK
+![Confirm columns to include](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-6-Select-Columns.png)
+8. Click Home > Close > Close & Load to close the editor window and to load the data into an Excel sheet
+![Close & Load](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/assets/images/PowerQuery-7-Close-and-Load.png)
 
 The resulting workbook can be saved as an Excel workbook. Doing so will save the query steps and the data source can be modified in the query editor to reuse the exact steps again on a new data set.
