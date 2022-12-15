@@ -11,8 +11,12 @@ event_log.event_log_id,
       (select
       '[q' + test_setup_details.output_code + 
         iif(rtrim(test_setup_details_type.sc_code) = 'MULTILIST', 
-        '_' + coalesce(test_setup_details_answers.output_code, cast(test_setup_details_answers.test_setup_answers_value as varchar), '')
-        , '')
+        '_' + coalesce(
+          test_setup_details_answers.output_code, 
+          cast(test_setup_details_answers.test_setup_answers_value as varchar), 
+          cast(test_setup_details_answers.test_setup_answers_value as varchar), 
+          ''),
+        '')
         + ']' + 
         case 
           when rtrim(test_setup_details_type.sc_code) = 'NARRATIVE' then test_details_answers.narrative
