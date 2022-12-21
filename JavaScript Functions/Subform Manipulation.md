@@ -47,6 +47,11 @@ function insertIntoSubform(subformCaption, updateColumn, newValue) {
   // Nedd to pass an array as the new value for lookup tables formatted as foreign keys.
   // Array should look like: [GUID, Caption, sc_code], e.g., ["14a7e914-e609-47a1-9435-d2ad77c96c97", "Unknown", "UN"]
   Array.isArray(newValue) ? subformcell.SetValue(...newValue) : subformcell.value = newValue;
+  
+  // Mark subform as dirty
+  subform.isDirty = true
+  subform.subFormHasData = true
+  DirtyFormField._defaultChangeDetector(subformcell) // Register subform as dirty to prompt myEvolv to save
 }
 ```
 
