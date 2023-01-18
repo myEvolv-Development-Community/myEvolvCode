@@ -38,7 +38,7 @@ function hideTestItem(test_header_code, question_code){
       getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
       getField() // Get the associated HTML element and give it to JQuery
     ).
-    parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
+    closest("div.QuestionContainer"). // Get the question container (contains both the prompt and the response(s). Look up the family tree for this element and take the first div.QuestionContainer element.
     hide()
   } catch {}
 }
@@ -49,7 +49,7 @@ function showTestItem(test_header_code, question_code){
       getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
       getField() // Get the associated HTML element and give it to JQuery
     ).
-    parent().parent(). // Get the parent for the result, which is the question container (contains both the prompt and the response(s)
+    closest("div.QuestionContainer"). // Get the question container (contains both the prompt and the response(s). Look up the family tree for this element and take the first div.QuestionContainer element.
     show()
   } catch {}
 }
@@ -107,7 +107,7 @@ for (let i = 1; i <= number_of_items; i++) { // Loop through 20 sections
     }
   );
   try {var hide_this_item = !Form.getTestAnswerValue(test, need + i, answer) } catch {var hide_this_item = false}; // Check whether the doc item is marked yes at load. If unchecked or not loaded, default to showing the remaining items.
-  if (hide_this_item)) { // On initial form load, hide these items if documentation not indicated as needed
+  if (hide_this_item) { // On initial form load, hide these items if documentation not indicated as needed
     for (let item of itemsToHide) { // Loop through items to show/hide
       hideTestItem(test, item + i);
     }
