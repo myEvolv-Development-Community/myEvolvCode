@@ -4,7 +4,9 @@ getDataValue(); is a very powerful function that can be used to query the data b
 
 ### Code:
 Basic formula <br>
-`getDataValue('table_or_view_name', 'join_field', joinValue, 'form_field', 'additional where clause in SQL' )`
+`getDataValue('table_or_view_name', 'join_field', joinValue, 'form_field', 'additional where clause in SQL', 'order by' )`<br>
+
+**NOTE:** the additional where clause seems to only acccept "null/not null/=" at this point
 
 **Examples of use**<br><br>
 Make another field disabled/not disabled based on information in the cleint's chart<br>
