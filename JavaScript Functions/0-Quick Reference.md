@@ -22,6 +22,7 @@ Some functions that you can use for various projects.
 | `&&` |  Use as "And" when usning mutiple javascript functions | `getDataValue('user_defined_lut', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yes'; && getDataValue('user_defined_lut2', 'user_defined_lut_id', 'UDF_choices', 'description') = 'Yellow'`
 | `===` |  In myEvolv NX javascript uses 3 `=` when you want the formula to mean "Equals" |  `getFormElement('udf_refcl') === 'A1B03084-BC60-4867-98A4-2AF7F2D3879F'`
 | `!` |  Use this when you want to mean "Not"  |  `getFormElement('udf_refcl') !== 'A1B03084-BC60-4867-98A4-2AF7F2D3879F'`
+|`ASC` `DESC`| These are used to indicate how you want the data ordered. `ASC` means "Ascending"- smallest value first `DESC` means "Descending"- largest value first |`program_name ASC`<br> program names will be listed in ABC order<br>`actual_date DESC` <br> Dates will be listed oldest to newest| 
 
 
 
