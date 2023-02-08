@@ -77,8 +77,6 @@ function markDirty(subform, subformRow) {
   subform.subFormHasData = true
   subformRow.isDirty = true
 }
-
-}
 ```
 
 ### Function Arguments
