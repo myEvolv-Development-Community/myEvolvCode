@@ -26,7 +26,8 @@ function insertIntoSubformJSON(subformCaption, cellContents) {
       sfValue.
       find(row => !row.isDirty && row.keyValue?.slice(0, 3) === 'new')
     Object.entries(cellContents).forEach(entry => updateCell(subformRow, entry))
-    commitSubformChange(subform, subformRow)
+    markDirty(subform, subformRow)
+    subform.RefreshGrid()
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
 }
 
@@ -36,26 +37,20 @@ function updateSubformJSON(subformCaption, booleanFunction, cellContents) {
     let subformRow = findSubformRow(subform, booleanFunction)
     if (subformRow) {
       Object.entries(cellContents).forEach(entry => updateCell(subformRow, entry))
-      commitSubformChange(subform, subformRow)
+      markDirty(subform, subformRow)
+      subform.RefreshGrid()
     } else console.warn(`No row was found in the subform meeting the condition: ${booleanFunction.toString()}`) // Also return undefined if no qualifying row found
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
 }
 
-function deleteSubformRow(subform, booleanFunction) {
+function deleteSubformRow(subformCaption, booleanFunction) {
   let subform = Form.getFormLineByCaption(subformCaption); // Get the subform element
   if (subform) {
     let subformRow = findSubformRow(subform, booleanFunction)
     subformRow.formMode = 'DELETE'
     commitSubformChange(subform, subformRow)
+    subform.RefreshGrid()
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
-}
-
-function findSubformRow(subform, booleanFunction) {
-  let rowIndex = subform // Get the first row of the subform that satisfies the filter condition
-    .sfValue
-    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {}))
-    .findIndex(booleanFunction);
-  return subform.sfValue[rowIndex]
 }
 
 function updateCell(row, keyValuePair) {
@@ -69,11 +64,20 @@ function updateCell(row, keyValuePair) {
  } else console.warn(`This subform does not contain a ${keyValuePair[0]} field!`)
 }
 
-function commitSubformChange(subform, subformRow) {
+function findSubformRow(subform, booleanFunction) {
+  let rowIndex = subform // Get the first row of the subform that satisfies the filter condition
+    .sfValue
+    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {}))
+    .findIndex(booleanFunction);
+  return subform.sfValue[rowIndex]
+}
+
+function markDirty(subform, subformRow) {
   subform.isDirty = true
   subform.subFormHasData = true
   subformRow.isDirty = true
-  subform.refreshGrid()
+}
+
 }
 ```
 
