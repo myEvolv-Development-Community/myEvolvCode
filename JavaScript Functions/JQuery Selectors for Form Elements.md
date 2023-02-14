@@ -36,7 +36,7 @@ selectFormGroup = function(group_caption) {
     getFormLineByCaption(group_caption).
     formLinesId
   }`).
-  parent()
+  closest("div.row")
 }
 
 //Use this to get a subreport embedded in a test
