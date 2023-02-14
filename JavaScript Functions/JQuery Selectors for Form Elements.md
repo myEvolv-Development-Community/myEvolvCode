@@ -11,7 +11,7 @@ selectElementByColumnName = function(column_name) {
   ).closest("div .form-group")
 }
 
-//Use this for subforms or subreports entered as form lines (not embedded in tests). Also works for form fields if field caption is preferred.
+//Use this for labels, subforms, or subreports entered as form lines (not embedded in tests). Also works for form fields if field caption is preferred.
 selectElementByCaption = function(caption) {
   return $(
     Form.
