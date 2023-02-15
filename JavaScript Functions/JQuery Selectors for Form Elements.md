@@ -60,5 +60,7 @@ selectTestGroup = function(group_caption) {
 The above return JQuery objects, which can then use common JQuery methods such as .show() and .hide().
 E.g., `selectTestGroup("Group 1").hide()`
 
+See [Show and Hide Test Items](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/JavaScript%20Functions/Show%20and%20Hide%20Test%20Items.md) for functions to select and hide most types of test questions.
+
 ### To-Do
-Confirm code for selecting label elements in form design.
+
