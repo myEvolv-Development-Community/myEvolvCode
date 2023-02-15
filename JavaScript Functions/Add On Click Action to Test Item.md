@@ -17,8 +17,8 @@ function getTestQuestionByCode(test_header_code, question_code) {
     find(q => q.output_code === question_code) // find a question with an output_code value that matches our question_code
 }
 
-createTestAnswerOnClick = function(test_header_code, question_code, new_function) {
-  var question = getTestQuestionByCode(test_header_code, question_code)// We need to reference the test question twice, so assigning it to a variable
+function createTestAnswerOnClick(test_header_code, question_code, new_function) {
+  let question = getTestQuestionByCode(test_header_code, question_code)// We need to reference the test question twice, so assigning it to a variable
   question. // Take the question we identified
     getField(). // Get the associated HTML element
     onclick = new_function // Add the function we defined as an onclick action for the response button
