@@ -53,8 +53,7 @@ selectTestGroup = function(test_code, group_caption) {
       GetField()
     ).
     closest("div .form-group").
-    children("div").
-    children("div.clearfix").
+    find("div div.clearfix").
     has("[question_type_code='']")
     
   return test_groups.
