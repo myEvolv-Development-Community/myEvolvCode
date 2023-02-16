@@ -46,9 +46,17 @@ selectTestSubreport = function(subreport_caption) {
 }
 
 //Use this to get a whole group within a test and all its contents
-selectTestGroup = function(group_caption) {
-  let test_groups = $("div.clearfix").
+selectTestGroup = function(test_code, group_caption) {
+  let test_groups = $(
+      Form.
+      getTestFormLineByCode("HideMe").
+      GetField()
+    ).
+    closest("div .form-group").
+    children("div").
+    children("div.clearfix").
     has("[question_type_code='']")
+    
   return test_groups.
     has(`label:contains(${group_caption})`).
     nextUntil(test_groups).
