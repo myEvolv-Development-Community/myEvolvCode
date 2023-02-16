@@ -8,8 +8,8 @@ selectElementByColumnName = function(column_name) {
     Form.
     getFormLineByColumnName(column_name).
     GetField()
-  ).closest("div .form-group")
-}
+  ).closest("div .form-group");
+};
 
 //Use this for labels, subforms, or subreports entered as form lines (not embedded in tests). Also works for form fields if field caption is preferred.
 selectElementByCaption = function(caption) {
@@ -17,8 +17,8 @@ selectElementByCaption = function(caption) {
     Form.
     getFormLineByCaption(caption).
     GetField()
-  ).closest("div .form-group")
-}
+  ).closest("div .form-group");
+};
 
 //Use this to get embedded tests by code
 selectSubTest = function(test_code) {
@@ -26,8 +26,8 @@ selectSubTest = function(test_code) {
     Form.
     getTestFormLineByCode(test_code).
     GetField()
-  ).closest("div .form-group")
-}
+  ).closest("div .form-group");
+};
 
 //Use this to get a form group and its entire contents
 selectFormGroup = function(group_caption) {
@@ -36,31 +36,31 @@ selectFormGroup = function(group_caption) {
     getFormLineByCaption(group_caption).
     formLinesId
   }`).
-  closest("div.row")
-}
+  closest("div.row");
+};
 
 //Use this to get a subreport embedded in a test
 selectTestSubreport = function(subreport_caption) {
   return $(`div.QuestionContainer`).
-    has(`label:contains(${subreport_caption})`)
-}
+    has(`label.testQuestionLabel:contains(${subreport_caption})`);
+};
 
 //Use this to get a whole group within a test and all its contents
 selectTestGroup = function(test_code, group_caption) {
   let test_groups = $(
       Form.
-      getTestFormLineByCode("HideMe").
+      getTestFormLineByCode(test_code).
       GetField()
     ).
     closest("div .form-group").
     find("div div.clearfix").
-    has("[question_type_code='']")
+    has("[question_type_code='']");
     
   return test_groups.
     has(`label:contains(${group_caption})`).
     nextUntil(test_groups).
-    addBack()
-}
+    addBack();
+};
 ```
 
 ### End-User Details
