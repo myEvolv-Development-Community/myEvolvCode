@@ -69,5 +69,7 @@ E.g., `selectTestGroup("Group 1").hide()`
 
 See [Show and Hide Test Items](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/JavaScript%20Functions/Show%20and%20Hide%20Test%20Items.md) for functions to select and hide most types of test questions.
 
+These selectors can be seen in action using the contributed [Hide Form Elements](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/Form%20Design/Exports/Hide%20Form%20Elements.json) form upload
+
 ### To-Do
 
