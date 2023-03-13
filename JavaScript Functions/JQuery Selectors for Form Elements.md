@@ -40,10 +40,16 @@ selectFormGroup = function(group_caption) {
 };
 
 //Use this to get a subreport embedded in a test
-selectTestSubreport = function(subreport_caption) {
-  return $(`div.QuestionContainer`).
-    has(`label.testQuestionLabel:contains(${subreport_caption})`);
-};
+selectTestSubreport = function(test_code, subreport_caption) {
+  return $(
+    Form.
+    getTestFormLineByCode(test_code).
+    GetField()
+  ).
+  closest("div .form-group").
+  find("div.QuestionContainer").
+  has(`label.testQuestionLabel:contains(${subreport_caption})`)
+}
 
 //Use this to get a whole group within a test and all its contents
 selectTestGroup = function(test_code, group_caption) {
