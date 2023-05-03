@@ -19,13 +19,13 @@ function setTestAnswerValue(test_code, question_code, answer_caption, newValue) 
     getTestFormLineByCode(test_code, Form.formObject). // Find which form line holds the test, by the test_code argument
     testValue. // Get the object representing the test
     Questions. // Get the array of test questions
-    filter(q => q.output_code == question_code)[0]; / Find the question that matches the question_code argument
+    filter(q => q.output_code == question_code)[0]; // Find the question that matches the question_code argument
 
   let answer = question.
     Answers. // Get the answers from the selected question
     filter(a => a.test_setup_answers_caption == answer_caption)[0]; // Get the answer with a caption that matches the answer_caption argument
 
-  if (question.details_type_code.slice(-4 == 'LIST')) { // If this is a single- or multi-select test question
+  if (question.details_type_code.slice(-4) == 'LIST') { // If this is a single- or multi-select test question
     if (answer.value ^ newValue) { // If the option in the single- or multi-select question is checked, or the newValue argument is true, but not both
       question.
       getField(). // Get the HTML representation of the question
@@ -33,7 +33,7 @@ function setTestAnswerValue(test_code, question_code, answer_caption, newValue) 
       click();} // Simulate a click on the button 
   } else { // If the question is not a single- or multi-select item
     question.
-    getField. // Get the HTML representation of the test item
+    getField(). // Get the HTML representation of the test item
     value = newValue; // Insert the new value in the box
   }
 }
