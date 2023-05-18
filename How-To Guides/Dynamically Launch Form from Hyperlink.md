@@ -4,7 +4,7 @@ Configure a custom report in myEvolv to launch a different form for different ev
 
 How to do it:
 
-1. Create the following view under `Reports > NX Custom Reporting > NX Custom Reporting > Custom Reporting > Virtual Views Setup` and name it `Event Form View` (the SQL name will be `vv_Event_Form_Vuew`).`
+1. Create the following view under `Reports > NX Custom Reporting > NX Custom Reporting > Custom Reporting > Virtual Views Setup` and name it `Event Form View` (the SQL name will be `vv_Event_Form_View`).`
 
 ```sql
 select
