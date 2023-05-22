@@ -61,7 +61,7 @@ To take advantage of this query pattern, we do the following (for simplicity, th
 
  |Column Definition| Filter Type| Operator| Default Value|Order to Display|
   |:---|:---|:---|:---|:---|
-  |`@p0 AS [user_id]`|Regular String|Equal To| |@staff_id|1|
+  |`@p0 AS [user_id]`|Regular String|Equal To| @staff_id|1|
   |`case when exists...`|Regular Numeric|Equal To|1|2|
   
   *Note:* It is important for the @p0 parameter to be listed first, even if it is not visible to the user. @p0 (and @p1, @p2, etc., are placeholders for the parameters defined in the custom report and are numbered according to their display order, so this parameter *must* appear before any others in the list (otherwise, @p0 will be assigned to a different parameter)
