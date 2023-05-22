@@ -68,7 +68,7 @@ To take advantage of this query pattern, we do the following (for simplicity, th
   
   5. Close the Manage Parameters window, save the report, test, and optionally publish it to an Evolv report.
 
-The above method may improve report performance considerably. Using the method described here, an initial test ran `program_enrollment_expanded_view` secured with a join to `all_clients_secure_view` in about 21 seconds, and ran `program_enrollment_expanded_view` filtered using `WHERE EXISTS` an appropriate listing in `all_clients_secure_view` in about 11.5 seconds, a reduction of about 45%.
+The above method may improve report performance considerably. Using the method described here, an initial test ran `program_enrollment_expanded_view` secured with a join to `all_clients_secure_view` in about 11 minutes, and ran `program_enrollment_expanded_view` filtered using `WHERE EXISTS` an appropriate listing in `all_clients_secure_view` in about 6 minutes, a reduction of about 45%.
 
 The above method can be expanded to use multiple conditions, and we have used this pattern to filter a result according to:
 1. Clients the current user is allowed to access
