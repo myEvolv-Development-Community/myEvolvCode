@@ -5,7 +5,6 @@ This page contains an updated implementation of the manipulation functions in a 
 
 ### Code to Do It:
 ```javascript
-
 function querySubform(subformCaption, booleanFunction, outputColumn) {
   let subform = Form.getFormLineByCaption(subformCaption);
   if (subform) {
@@ -24,9 +23,9 @@ function insertIntoSubformJSON(subformCaption, cellContents) {
   if (subform) {
     let subformRow = subform. // Find the empty subform row at the end
       sfValue.
-      find(row => !row.isDirty && row.keyValue?.slice(0, 3) === 'new')
+      find(row => !row.isDirty && row.keyValue?.slice(0, 3) === 'new' && row.keyValue?.length > 3)
     Object.entries(cellContents).forEach(entry => updateCell(subformRow, entry))
-    markDirty(subform, subformRow)
+    commitSubformChange(subform, subformRow)
     subform.RefreshGrid()
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
 }
@@ -37,7 +36,7 @@ function updateSubformJSON(subformCaption, booleanFunction, cellContents) {
     let subformRow = findSubformRow(subform, booleanFunction)
     if (subformRow) {
       Object.entries(cellContents).forEach(entry => updateCell(subformRow, entry))
-      markDirty(subform, subformRow)
+      commitSubformChange(subform, subformRow)
       subform.RefreshGrid()
     } else console.warn(`No row was found in the subform meeting the condition: ${booleanFunction.toString()}`) // Also return undefined if no qualifying row found
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
@@ -47,9 +46,11 @@ function deleteSubformRow(subformCaption, booleanFunction) {
   let subform = Form.getFormLineByCaption(subformCaption); // Get the subform element
   if (subform) {
     let subformRow = findSubformRow(subform, booleanFunction)
-    subformRow.formMode = 'DELETE'
-    commitSubformChange(subform, subformRow)
-    subform.RefreshGrid()
+    if (subformRow) {
+      subformRow.formMode = 'DELETE'
+      commitSubformChange(subform, subformRow)
+      subform.RefreshGrid()
+    }
   } else console.warn(`No subform was found with the caption ${subformCaption}`); // Also return undefined if no subform found
 }
 
@@ -60,6 +61,7 @@ function updateCell(row, keyValuePair) {
   if (subformcell) {
     let newValue = keyValuePair[1];
     Array.isArray(newValue) ? subformcell.SetValue(...newValue) : subformcell.value = newValue;
+    subformcell.subFormHasData = true
     DirtyFormField._defaultChangeDetector(subformcell) // Register subform as dirty to prompt myEvolv to save
  } else console.warn(`This subform does not contain a ${keyValuePair[0]} field!`)
 }
@@ -72,10 +74,13 @@ function findSubformRow(subform, booleanFunction) {
   return subform.sfValue[rowIndex]
 }
 
-function markDirty(subform, subformRow) {
+function commitSubformChange(subform, subformRow) {
   subform.isDirty = true
   subform.subFormHasData = true
   subformRow.isDirty = true
+  subformRow.hasData = true
+  subformRow.subFormHasData = true
+  
 }
 ```
 
