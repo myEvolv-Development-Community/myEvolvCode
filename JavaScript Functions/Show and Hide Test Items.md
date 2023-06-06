@@ -47,7 +47,7 @@ function showTestItem(test_header_code, question_code){
   try {
     var question_element = $( // Search this HTML element using JQuery
       getTestQuestionByCode(test_header_code, question_code). // find a question with an output_code value that matches our question_code
-      getField() // Get the associated HTML element and give it to JQuery
+      GetField() // Get the associated HTML element and give it to JQuery
     ).
     closest("div.QuestionContainer"). // Get the question container (contains both the prompt and the response(s). Look up the family tree for this element and take the first div.QuestionContainer element.
     show()
