@@ -11,7 +11,7 @@ form_name,
 event_name,
 event_log.actual_date,
 concat(
-  '<a href="https://myevolvheartlandxb.netsmartcloud.com/Form.aspx?caller=Listing&', -- begin creating the hyperlink
+  '<a href="https://myevolvagencyxb.netsmartcloud.com/Form.aspx?caller=Listing&', -- begin creating the hyperlink, using your agency's URL
   'key_value=', event_log.event_log_id, -- key value for form is the event_log_id. Also works for any table key that is a copy of the event_log_id (e.g., test_header_id)
   '&parent_value=', event_log.people_id, -- parent value for the form is people_id. Modify if another parent value is needed
   '&form_header_id=', form_header.form_header_id, -- the form to launch, based on the event definition
