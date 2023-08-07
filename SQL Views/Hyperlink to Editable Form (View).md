@@ -25,7 +25,7 @@ inner join event_log on event_log.event_definition_id = event_definition.event_d
 ```
 
 ### Other Details
-Can be used in either a custom report launched from the Reports module or in a virtual view subreport to embed within a form. In either case, the `hyperlink` column should be formatted as a Memo field, which converts the text into an HTML hyperlink tag.
+Can be used in either a custom report launched from the Reports module or in a virtual view subreport to embed within a form. In either case, the `hyperlink` column should be formatted as a Memo field, which converts the text into an HTML hyperlink tag (`<a>`).
 
 Be aware that this view does not include any restrictions based on worker permissions, and could theoretically bypass a worker's role security, allowing edits or deletions where these actions would not normally be permitted.
 
