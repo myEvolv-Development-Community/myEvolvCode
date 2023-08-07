@@ -1,4 +1,5 @@
 ### What You Want to Do:
+Embed a link to an editable version of a form in a Custom Report or Subreport, without JavaScript!
 
 ### View Definition
 ```sql
