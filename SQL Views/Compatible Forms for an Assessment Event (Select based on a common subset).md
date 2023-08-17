@@ -1,5 +1,5 @@
 ### What You Want to Do:
-So... you changed a form associated with an assessment event instead of ending access to the old form and creating a new one. Now the event form loads but the tests from before the change show up as blank, and there are now events saved with the new event form, so you can't simply change back to the old form. You screwed up. You know what you did was wrong. The question is, how are you gonna make things right? Maybe you were trying to be save time. But take it from a guy who's been frozen for 65 years... the only way to really save time is to follow the rules.
+> So... you changed a form associated with an assessment event instead of ending access to the old form and creating a new one. Now the event form loads but the tests from before the change show up as blank, and there are now events saved with the new event form, so you can't simply change back to the old form. You screwed up. You know what you did was wrong. The question is, how are you gonna make things right? Maybe you were trying to be save time. But take it from a guy who's been frozen for 65 years... the only way to really save time is to follow the rules.
 
 ![Captain America delivering a PSA](https://i.kym-cdn.com/entries/icons/original/000/026/202/america.jpg)
 
@@ -32,8 +32,29 @@ and event_log.date_entered > event_definition_a.date_archived
 ```
 
 ### Other Details
-Specify parameters, special forms structures to implement
 
+1. How it works
+
+
+2. Working example: redirect form after load to a compatible form from the event deifnition's history.
+
+Added to the form's After Load Code
+```js
+if(formMode != 'ADD') { // Do this for EDIT, DELETE, or VIEW
+    window.location.href = // Redirect to a different URL
+        window.location.href.replace( // Use replace() to swap out the form_header_id, the only change we want to make here
+            /(?<=form_header_id=)[^&]*/i, // I used a regular expression to find the GUID following the query parameter 'form_header_id=' amd up to the next parameter (indicated with an &). Now I have two problems.
+            getDataValue( // Query the virtual view defined above, looking up the test event in the current window.
+                "vv_Compatible_Forms_for_Assessment", 
+                "test_header_id", 
+                keyValue, 
+                "form_header_id", // return the form_header_id to use
+                null, 
+                "date_archived desc" // Pull the most recently-associated form from the list.
+            )
+    );
+}
+```
 
 ### Example Output
 |test_header_id	|form_header_id	|test_setup_header_id|	date_archived	date_entered|
