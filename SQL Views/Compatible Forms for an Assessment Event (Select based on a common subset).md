@@ -15,18 +15,17 @@ event_definition_a.date_archived,
 event_log.date_entered
 from event_log
 inner join test_multiple_link on event_log.event_log_id = test_multiple_link.test_header_id
---inner join test_setup_header on test_setup_header.test_setup_header_id = test_multiple_link.test_setup_header_id
 inner join form_lines on test_multiple_link.test_setup_header_id = form_lines.sub_test_header_id
 inner join event_definition_a on form_lines.form_header_id = event_definition_a.form_header_id
 where event_definition_a.event_definition_id = event_log.event_definition_id
 and not exists(
-select tsm.test_setup_header_id
-from test_multiple_link as tsm
-where test_multiple_link.test_header_id = tsm.test_header_id
-except 
-select sub_test_header_id
-from form_lines
-where form_lines.form_header_id = event_definition_a.form_header_id
+  select tsm.test_setup_header_id
+  from test_multiple_link as tsm
+  where test_multiple_link.test_header_id = tsm.test_header_id
+  except 
+  select sub_test_header_id
+  from form_lines
+  where form_lines.form_header_id = event_definition_a.form_header_id
 )
 and event_log.date_entered > event_definition_a.date_archived
 ```
@@ -34,9 +33,33 @@ and event_log.date_entered > event_definition_a.date_archived
 ### Other Details
 
 1. How it works
+The query above works in three distinct steps:
+a. Find all the subtests that should be associated with the event. `test_multiple_link` records which sub-tests (`test_setup_header_id`) should be associated with the test event (`test_header_id`)
+```sql
+select
+test_multiple_link.test_header_id,
+test_multiple_link.test_setup_header_id
+from event_log
+inner join test_multiple_link on event_log.event_log_id = test_multiple_link.test_header_id
+```
 
+b. Find all the forms that have historically been associated with the event definition for the assessment event using the event_definition_a (audit) table and which contain at least one of the relevant sub-tests.
+```sql
+select
+event_definition_a.form_header_id,
+event_definition_a.date_archived,
+event_log.date_entered
+from event_log
+inner join test_multiple_link on event_log.event_log_id = test_multiple_link.test_header_id
+inner join form_lines on test_multiple_link.test_setup_header_id = form_lines.sub_test_header_id
+inner join event_definition_a on form_lines.form_header_id = event_definition_a.form_header_id
+where event_definition_a.event_definition_id = event_log.event_definition_id
+and event_log.date_entered > event_definition_a.date_archived
+```
 
-2. Working example: redirect form after load to a compatible form from the event deifnition's history.
+c. Keep only the forms that contain form lines for *all* of the sub-tests associated with the event instance. `NOT EXISTS (... EXCEPT ...)` re-frames this statement as something like 'There are *not any* sub-tests associated with this event occurence that are not included on the form.' If there is a subtests that should be associated with the event but it not on the form, then the form is excluded from the result.
+
+3. Working example: redirect form after load to a compatible form from the event definition's history.
 
 Added to the form's After Load Code
 ```js
@@ -55,6 +78,8 @@ if(formMode != 'ADD') { // Do this for EDIT, DELETE, or VIEW
     );
 }
 ```
+
+When the event is opened, there is a brief delay as the system looks up and re-opens the correct form, but then the event will appear with the appropriate form, which may or may be the current form associated with the event.
 
 ### Example Output
 |test_header_id	|form_header_id	|test_setup_header_id|	date_archived	date_entered|
