@@ -69,7 +69,7 @@ function updateCell(row, keyValuePair) {
 function findSubformRow(subform, booleanFunction) {
   let rowIndex = subform // Get the first row of the subform that satisfies the filter condition
     .sfValue
-    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {}))
+    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {parentValue:x.parentValue, keyValue:x.keyValue}))
     .findIndex(booleanFunction);
   return subform.sfValue[rowIndex]
 }
