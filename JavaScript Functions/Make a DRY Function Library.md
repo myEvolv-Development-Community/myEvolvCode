@@ -14,7 +14,7 @@ Our solution is the DRY principle, or "Don't Repeat Yourself." The DRY principle
 There are some example functions at the end of this guide, too.
 
 ## Step 1: Create an obscure form:
-I say obscure, because it doesn't really matter where you put it, you'll never use it on the front end. However, you'll probably want it stashed out of the way to prevent accidental changes. I chose to make a form called "Script Master" in the **Materials Provided** form family. Again, doesn't matter a whole lot. ==Just take note of what you make the form code==. I'll use "script_master_form" for my form code. When you copy a form in the family that already exists, you can remove all of the fields that come with it - we won't need any of them. (==Just remember to make sure you're selected on your *new* form after the copy==, so you don't make accidental changes to the existing form like I have mistakenly done many, many, *many* times...)
+I say obscure, because it doesn't really matter where you put it, you'll never use it on the front end. However, you'll probably want it stashed out of the way to prevent accidental changes. I chose to make a form called "Script Master" in the **Materials Provided** form family. Again, doesn't matter a whole lot. !!Just take note of what you make the form code!!. I'll use "script_master_form" for my form code. When you copy a form in the family that already exists, you can remove all of the fields that come with it - we won't need any of them. (!!Just remember to make sure you're selected on your *new* form after the copy!!, so you don't make accidental changes to the existing form like I have mistakenly done many, many, *many* times...)
 
 ## Step 2: Create a variable:
 On your new form, create a variable ( It has the **</>** icon ) and call it whatever you want. The caption doesn't matter much, but the variable name does, remember what you name that. I'm going to call mine `script_master`
@@ -172,7 +172,7 @@ eval(addToWindow);
 ```
 
 ### A warning about eval
-== eval() can be dangerous ==
+!! eval() can be dangerous !!
 **NEVER** execute code through eval that the end user can influence. For example, this is **BAD**:
 ```javascript
 // On change:
