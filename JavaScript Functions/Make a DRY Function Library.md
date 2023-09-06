@@ -1,10 +1,10 @@
-### The Problem:
+## The Problem:
 There will probably get to a point in your myEvolv development where you end up having the same function copied and pasted to many different places in your system. Or, maybe you have a cheatsheet of codes you use in many places. The problem with this is when you have to make changes to the code, you'd have to go through every form and update each one individually - which is time consuming, to say the least.
 
-### What You Want to Do:
+## What You Want to Do:
 Our solution is the DRY principle, or "Don't Repeat Yourself." The DRY principle emphasizes the idea of reusability and aims to reduce repitition in code, and results in you only having to makes changes in one place instead of several.
 
-### How to do this, step-by-step:
+## How to do this, step-by-step:
 1. Create an obscure form somewhere.
 2. Create a variable on the form.
 4. Write the scripting you want available across the system.
@@ -13,14 +13,14 @@ Our solution is the DRY principle, or "Don't Repeat Yourself." The DRY principle
 
 There are some example functions at the end of this guide, too.
 
-### Step 1: Create an obscure form:
+## Step 1: Create an obscure form:
 I say obscure, because it doesn't really matter where you put it, you'll never use it on the front end. However, you'll probably want it stashed out of the way to prevent accidental changes. I chose to make a form called "Script Master" in the **Materials Provided** form family. Again, doesn't matter a whole lot. ==Just take note of what you make the form code==. I'll use "script_master_form" for my form code. When you copy a form in the family that already exists, you can remove all of the fields that come with it - we won't need any of them. (==Just remember to make sure you're selected on your *new* form after the copy==, so you don't make accidental changes to the existing form like I have mistakenly done many, many, *many* times...)
 
-### Step 2: Create a variable:
+## Step 2: Create a variable:
 On your new form, create a variable ( It has the **</>** icon ) and call it whatever you want. The caption doesn't matter much, but the variable name does, remember what you name that. I'm going to call mine `script_master`
 
-### Step 3: Add some code:
-## Set the stage
+## Step 3: Add some code:
+### Set the stage
 In your variable, we need a place to add our function library. I've been using `On Click` out of habit, but any of them besides *On Load* should work fine (*On Load* has a character limit). First thing we're going to do is add a try/catch wrapper, *just in case*:
 ```javascript
 try {
@@ -31,12 +31,12 @@ try {
 }
 ```
 
-## The general concept
+### The general concept
 The way this will work is we are going to define a library underneath a JSON object and store it in the `window` when we load a form. That way it can be accessed anywhere on the form without being defined. **Note:** We *aren't* going to use `window.top` here because we want the function library to refresh with every form refresh.
 
 Objects like this are generally defined with a capital letter. You can pick whatever name you want, but try and avoid some obvious ones like "System" and "Form" and "Netsmart", etc. I have used the name of my organization before, that way I know my object name unique. So if my organization's name is "Human Services, LLC", I might call my object "Human." For this tutorial, I'm going to go with "Example."
 
-## Add your object
+### Add your object
 Add this code *within* the `try` statement:
 ```javascript
 try {
@@ -47,7 +47,7 @@ try {
 // ...
 ```
 
-### Step 4: Define our function library
+## Step 4: Define our function library
 Now we can define the codes we want to use in multiple places. There are plenty of them available on this GitHub repository that would fit well into this model, such as [Subform Manipulation 2](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/5fb04f809915cdc6536424ea7da2ab3227a47dd6/JavaScript%20Functions/Subform%20Manipulation%202.md) and [Launch an Event](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/5fb04f809915cdc6536424ea7da2ab3227a47dd6/JavaScript%20Functions/Launch%20an%20Event.md).
 
 Let's add some basic examples:
@@ -86,7 +86,7 @@ Let's add some basic examples:
     };
 ```
 
-## Add object to window
+### Add object to window
 In browsers the `window` object contains information about your session, and we're going to store our library there temporarily when we access a form in myEvolv. To make sure this happens, we need to add the following to the end of our `try` statement:
 ```javascript
 window.Example = Example;
@@ -147,7 +147,7 @@ window.Example = {
 
 I don't opt for this more as a personal preference, I like to see things happening in separate steps in this case.
 
-### Step 5: 
+## Step 5: 
 The only thing that is actually happening in the script above, is our object of functions is being added to the window. Now let's switch gears and add the helper script to any form where we want the system to actually do that. Once the object is in the in the window, we will be able to access our functions anywhere we want.
 
 On a front-facing form, such as a "Therapy" service entry, we need to create a *hidden* variable at the very **top** of the form to store the small script that grabs our library. We're using a variable here because we don't actually need myEvolv to store any information from here in the database, so using a *Field* or *Event Log Field* is unnecessary. Name the variable whatever you want, I'll call this example one "script_library_loader". In this new variable, add the following script to the **On Load** property.
@@ -171,7 +171,7 @@ const addToWindow = getDataValue('form_view', 'form_code', 'script_master_form',
 eval(addToWindow);
 ```
 
-## A warning about eval
+### A warning about eval
 == eval() can be dangerous ==
 **NEVER** execute code through eval that the end user can influence. For example, this is **BAD**:
 ```javascript
@@ -188,7 +188,7 @@ eval(constantScriptingThatNeverChanges);
 
 Once the script library is in the window, it's okay to send user input to one of your library functions, as we'll describe below.
 
-### Step 6: Test our work!
+## Step 6: Test our work!
 While you're on the front-facing form, let's use one of our example scripts from our library. I'm going to call our addition example in the *After Load* form property:
 ```javascript
 Example.additionalExample([1, 2, 3, 4, 5]);
@@ -204,10 +204,10 @@ Adding 5 to 10!
 The total sum: 15
 ```
 
-## What just happened?
+### What just happened?
 Let's recap: We have our addition function `Example.additionalExample()` located somewhere else in the system, but it's being loaded into our form by our eval script in that `script_library_loader` variable we created. On Load script are first to fire off when loading a form, so when we get to After Load (which is last), we can use the `Example.additionalExample()` function to add our numbers.
 
-### Final Considerations
+## Final Considerations
 Now let's say we add our `Example.additionalExample()` script to multiple forms, all over our system... but we want to add a validation check to make sure that the array provided is not 0 and is indeed an array (as opposed to a string). Instead of going through all of our forms individually, we can simply update the source function in our `script_master_form` form, and everything will update automatically. Give it a try:
 ```javascript
 additionalExample: function (arrayOfNumbers) {
@@ -232,7 +232,7 @@ Now, if you throw `Example.additionalExample('some string')` into After Load, yo
 
 **Pro tip:** Did you notice in my new example that I stated the name of the function in the beginning of the error message? This is a good practice to get in the habit of, it will make troubleshooting your forms and scripts *much* easier.
 
-### Additional Examples
+## Additional Examples
 ```javascript
 const someExamples = {
     
