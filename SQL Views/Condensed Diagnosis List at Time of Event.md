@@ -1,6 +1,6 @@
 ### What You Want to Do:
 
-Collapse multiple racial identifications into a single value per person.
+Collapse multiple diagnosis into a single value per person.
 
 ### View Definition
 ```sql
