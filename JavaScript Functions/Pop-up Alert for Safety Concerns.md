@@ -37,7 +37,13 @@ window.
             ) {alert("This client presents a safety risk to staff!")}
           })
         })
-        window.top.selectionObservers[i].observe(window.top.header_ribbon_bodies[i].contentDocument.querySelector("body #client-name-id"), {subtree: true, childList: true, characterData: true})
+        window.
+          top.
+          selectionObservers[i].
+          observe(
+            window.top.header_ribbon_bodies[i].contentDocument.querySelector("body #client-name-id"),
+            {subtree: true, childList: true, characterData: true}
+          )
         observer.disconnect()
       }
     })
