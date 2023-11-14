@@ -8,7 +8,7 @@ This resource is intended to improve the column sorting process in myEvolv NX Cu
 The user would then be able to fine-tune the ordering and visibility of columns to finish the report.
 
 ### How to Do It:
-1. Upload the (Report Sorting Helper form)[https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/Form%20Design/Exports/Report%20Sorting%20Helper.json] into your myEvolv system.
+1. Upload the [Report Sorting Helper form](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/Form%20Design/Exports/Report%20Sorting%20Helper.json) into your myEvolv system.
 2. Create a new virtual view under Reports > NX Custom Reporting > NX Custom Reporting > Custom Reporting, called "Condensed Table Columns" (the SQL name will be "vv_Condensed_Table_Columns"). Use the following SQL definition:
 ```sql
 select 
@@ -30,7 +30,8 @@ from INFORMATION_SCHEMA.TABLES
 ```
 3. Create a new Custom Report or open a custom report you want to adjust the column sorting on. Make sure the report includes a Table.
 4. In the Table section under Report Columns, right-click and select Inspect from the menu.
-5. In the Developer pane that opens, select the Console tab and run the following script:
+   ![](https://raw.githubusercontent.com/myEvolv-Development-Community/myEvolvCode/main/How-To%20Guides/assets/images/Custom%20Report%20Sorting%201.png)
+6. In the Developer pane that opens, select the Console tab and run the following script:
 ```js
 function getTableInfo(table_name, output_column) { 
 // wrapper to getDataValue to pull column information from a custom virtual view we created
@@ -115,5 +116,10 @@ var aliases =
 var running_total = 0
 OpenFormGeneric(Form.formObject.serverHandling, "Sorting", null, "EDIT")
 ```
+![](https://raw.githubusercontent.com/myEvolv-Development-Community/myEvolvCode/main/How-To%20Guides/assets/images/Custom%20Report%20Sorting%202.png)
+
 6. A window will appear with the names of the tables used in the current report. Drag and drop the table names to re-order them as desired, then click "Finish Sorting" and confirm you want to navigate away.
-7. The window will close and the report columns will have new order numbers assigned to them. Make any final adjustments to the column ordering or visibility, then save the report.
+![](https://raw.githubusercontent.com/myEvolv-Development-Community/myEvolvCode/main/How-To%20Guides/assets/images/Custom%20Report%20Sorting%203.png)
+
+8. The window will close and the report columns will have new order numbers assigned to them. Make any final adjustments to the column ordering or visibility, then save the report.
+![](https://raw.githubusercontent.com/myEvolv-Development-Community/myEvolvCode/main/How-To%20Guides/assets/images/Custom%20Report%20Sorting%204.png)
