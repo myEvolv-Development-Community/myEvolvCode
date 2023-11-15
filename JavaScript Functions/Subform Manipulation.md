@@ -1,3 +1,4 @@
+# This script is deprecated. It is recommended to use the [updated version of these functions](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/JavaScript%20Functions/Subform%20Manipulation%202.md)
 ### What You Want to Do:
 Query and manipulate the contents of a subform from the parent form like using `getFormElement` or `setFormElement`
 
