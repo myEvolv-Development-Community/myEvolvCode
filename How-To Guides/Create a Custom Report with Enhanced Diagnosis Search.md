@@ -11,7 +11,7 @@ Create a custom report with client diagnosis codes (ICD-10-based) and a search b
 ### `dbo.fnSplit`
 Netsmart has provided a custom SQL function called `dbo.fnSplit`, which takes a string, splits the string wherever a certain character appears, and returns a table containing one column (called `item`) and rows corrsponding to the segments of the original string.
 
-For example, `select * from dbo.fnSplit('this', 'that', 'the other', ',')` returns:
+For example, `select * from dbo.fnSplit('this, that, the other', ',')` returns:
 |item|
 |:---|
 |this|
