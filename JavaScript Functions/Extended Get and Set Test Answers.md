@@ -60,6 +60,7 @@ function setTestSelectionByCode(test_header_code, question_code, answer_code, an
 |question_code|The shortcut code for the specific test item.|String|
 |returnCaption|Toggle whether to return the answer caption or the numeric answer value. |Boolean. Defaults to `true`|
 |answer_caption|The caption of the response option to update.|String|
+|answer_code|The output code value for the response option to update.|String|
 |newValue|The value to set the test answer to.|String or Boolean. Single- and multiple-select items take a Boolean value.|
 
 ### Implementation Details
@@ -68,6 +69,7 @@ These functions are modeled after the `getTestAnswerValue` function, and have th
 `getTestSelections` will work for both single- and multiple-select items, but the answer captions do not need to be specified in advance. The function will return an array of selections, or an empty array if none are selected.
 
 ### End-User Details
+`setTestSelection` and `setTestSelectionByCode` will work for all question types. However, picklists present  a challenge because the answer caption is not obvious without referencing test designer, and the supplied value needs to be the GUID for the selection option, not the displayed text that getTestAnswerValue would return for the same item.
 
 Older versions of this code included the following `setTestAnswerValue` function, which has been replaced with `setTestSelection` and `setTestSelectionByCode` and which do not rely on simulated mouse-clicks.
 
