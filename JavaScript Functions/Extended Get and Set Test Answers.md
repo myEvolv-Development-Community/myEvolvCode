@@ -14,6 +14,64 @@ function getTestSelections(test_code, question_code, returnCaption = true) {
     map(x => x[returnCaption ? "test_setup_answers_caption" : "test_setup_answers_value"]) // Across the array of selected options, return either the caption of the response or its numeric value.
 }
 
+function setTestSelection(test_header_code, question_code, answer_caption, answer_value) {
+  let question_object = Form.getTestQuestionByCode(test_header_code, question_code)
+  let answer_selection = 
+    question_object.
+    Answers.
+    find(option => 
+      option.test_setup_answers_caption.toLowerCase() == answer_caption.toLowerCase()
+    )
+    
+  Form.UpdateTestAnswerValue(
+    question_object.test_setup_details_id,
+    answer_selection.test_setup_details_answers_id,
+    answer_value
+  )
+  
+  FormMarshalling.unmarshalQuestion(question_object)
+  Form.setTestQuestionDirty(question_object.test_setup_details_id)
+}
+
+function setTestSelectionByCode(test_header_code, question_code, answer_code, answer_value) {
+  let question_object = Form.getTestQuestionByCode(test_header_code, question_code)
+  let answer_selection = 
+    question_object.
+    Answers.
+    find(option => 
+      option.output_code.toLowerCase() == answer_code.toLowerCase()
+    )
+    
+  Form.UpdateTestAnswerValue(
+    question_object.test_setup_details_id,
+    answer_selection.test_setup_details_answers_id,
+    answer_value
+  )
+  
+  FormMarshalling.unmarshalQuestion(question_object)
+  Form.setTestQuestionDirty(question_object.test_setup_details_id)
+}
+```
+
+### Function Arguments
+|Argument       |Definition |Data Type|
+|---            |---        |---      |
+|test_code|The shortcut code for the test. Specified in Test Design.|String|
+|question_code|The shortcut code for the specific test item.|String|
+|returnCaption|Toggle whether to return the answer caption or the numeric answer value. |Boolean. Defaults to `true`|
+|answer_caption|The caption of the response option to update.|String|
+|newValue|The value to set the test answer to.|String or Boolean. Single- and multiple-select items take a Boolean value.|
+
+### Implementation Details
+These functions are modeled after the `getTestAnswerValue` function, and have the same requirements for test and question codes.
+
+`getTestSelections` will work for both single- and multiple-select items, but the answer captions do not need to be specified in advance. The function will return an array of selections, or an empty array if none are selected.
+
+### End-User Details
+
+Older versions of this code included the following `setTestAnswerValue` function, which has been replaced with `setTestSelection` and `setTestSelectionByCode` and which do not rely on simulated mouse-clicks.
+
+```
 function setTestAnswerValue(test_code, question_code, answer_caption, newValue) {
   let question = Form. // Narrow in on the desired question, starting with the form object itself.
     getTestFormLineByCode(test_code, Form.formObject). // Find which form line holds the test, by the test_code argument
@@ -38,19 +96,3 @@ function setTestAnswerValue(test_code, question_code, answer_caption, newValue) 
   }
 }
 ```
-
-### Function Arguments
-|Argument       |Definition |Data Type|
-|---            |---        |---      |
-|test_code|The shortcut code for the test. Specified in Test Design.|String|
-|question_code|The shortcut code for the specific test item.|String|
-|returnCaption|Toggle whether to return the answer caption or the numeric answer value. |Boolean. Defaults to `true`|
-|answer_caption|The caption of the response option to update.|String|
-|newValue|The value to set the test answer to.|String or Boolean. Single- and multiple-select items take a Boolean value.|
-
-### Implementation Details
-These functions are modeled after the `getTestAnswerValue` function, and have the same requirements for test and question codes.
-
-`getTestSelections` will work for both single- and multiple-select items, but the answer captions do not need to be specified in advance. The function will return an array of selections, or an empty array if none are selected.
-
-### End-User Details
