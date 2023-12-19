@@ -29,7 +29,7 @@ try {
 If successfully implemented, the Save button will disappear from an open form.
 
 ## Credits:
-Acknowledge specific creators if known.
+h/t to Matt Wills for providing the JQuery approach
 
 ### To-Do
 If there is a known issue or edge case still to work out, describe it here.
