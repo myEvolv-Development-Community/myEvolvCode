@@ -15,7 +15,7 @@ function getTestQuestionByCode(test_header_code, question_code) {
         test_header_code === test_header_code)
     if (!test) {
       throw `No test was found with the code '${test_header_code}'`
-      } else { return test }
+      }
   } catch(missing_test_error) {
     return console.error(missing_test_error)
   }
