@@ -1,0 +1,33 @@
+```js
+function getTestQuestionByCode(test_header_code, question_code) {
+  try{
+    var test = Form. // The Form currently open
+      formObject.
+      FormLines. // The form elements on the form. Tests and assessments occupy one form line each
+      find(fl => // Search through the form lines ("fl")
+        fl.
+        testValue?.  // Look inside each form line's testValue property. The next property may or may not exist, so we look with ?.
+        test_header_code === test_header_code)
+    if (!test) {
+      throw `No test was found with the code '${test_header_code}'`
+      }
+  } catch(missing_test_error) {
+    return console.error(missing_test_error)
+  }
+  
+  try {
+    var question = test.
+      testValue. // Take the matching testValue entry
+      Questions. // Look inside the array of questions for the test
+      find(q => q.output_code === question_code) // find a question with an output_code value that matches our question_code
+    if (!question) {throw `No question was found with the code '${question_code}' in test '${test_header_code}'`}
+  } catch(missing_question_error) {
+    return console.error(missing_question_error)
+  }
+  return question
+}
+```
+
+* Note
+
+Preserved for posterity, but Netsmart provides a function with the same name and same end-behavior as this one, so the Netsmart-maintained function should be preferred.
