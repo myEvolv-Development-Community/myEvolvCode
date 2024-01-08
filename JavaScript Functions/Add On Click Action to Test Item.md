@@ -4,19 +4,6 @@ Add actions to execute when a test item is clicked, e.g., to select an option on
 
 ### Code to Do It:
 ```javascript
-function getTestQuestionByCode(test_header_code, question_code) {
-  return Form. // The Form currently open
-    formObject.
-    FormLines. // The form elements on the form. Tests and assessments occupy one form line each
-    find(fl => // Search through the form lines ("fl")
-      fl.
-      testValue?.  // Look inside each form line's testValue property. The next property may or may not exist, so we look with ?.
-      test_header_code === test_header_code). // Check whether the test_header_code for the embedded test matches our searched code (again, if it exists.)
-    testValue. // Take the matching testValue entry
-    Questions. // Look inside the array of questions for the test
-    find(q => q.output_code === question_code) // find a question with an output_code value that matches our question_code
-}
-
 function createTestAnswerOnClick(test_header_code, question_code, new_function) {
   let question = getTestQuestionByCode(test_header_code, question_code)// We need to reference the test question twice, so assigning it to a variable
   question. // Take the question we identified
