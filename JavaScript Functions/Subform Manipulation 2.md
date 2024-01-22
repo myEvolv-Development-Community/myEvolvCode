@@ -69,7 +69,7 @@ function updateCell(row, keyValuePair) {
 function findSubformRow(subform, booleanFunction) {
   let rowIndex = subform // Get the first row of the subform that satisfies the filter condition
     .sfValue
-    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {parentValue:x.parentValue, keyValue:x.keyValue}))
+    .map(x => x.FormLines.reduce((a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), {parentValue:x.parentValue, keyValue:x.keyValue, formMode:x.formMode}))
     .findIndex(booleanFunction);
   return subform.sfValue[rowIndex]
 }
@@ -132,3 +132,5 @@ One promising use case is to schedule follow-up events based on an assessment re
 
 3. The follow-up event is scheduled to occur by the end of the next day (becomes overdue at the stroke of midnight). 
 ![The Client Service Entry Screen now showing the completed assessment and a follow-up task](/JavaScript%20Functions/assets/images/Subform%20Manipulation%203.png "The Client Service Entry Screen now showing the completed assessment and a follow-up task")
+
+* Thanks to Michael Howard for suggesting the inclusion of formMode as a filterable property of a subform row
