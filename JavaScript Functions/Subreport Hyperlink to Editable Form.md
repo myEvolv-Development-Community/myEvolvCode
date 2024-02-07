@@ -101,7 +101,7 @@ Form.RefreshSubreport = (function() {
 |dataArray|The data values inside the subreport.|Array|
 
 ### Implementation Details
-1. Set up the [vv_event_forms_expanded](https://github.com/Khoirovoskos/Example-Code-Repo/blob/main/SQL%20Functions/Event%20Forms%20View.md) view in NX Custom Reporting.
+1. Set up the [vv_event_forms_expanded](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Event%20Forms%20Expanded.md) view in NX Custom Reporting.
 2. Define the subreport to display in the form.
   * For best results, follow Netsmart's instructions to create a hyperlinked subreport and confirm it successfully launches. 
   * Make sure the event_log_id is included in the subreport. It does not need to be visible.
