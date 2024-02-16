@@ -25,8 +25,6 @@ if (program !== myCoolProgram) {
 
 ### Implementation Details
 1. Code should be placed in on load section of service entry
-2. 
-3. Step 3
 
 ### End-User Details
 Users should see, or not see, the field desired based on which program is providing service
