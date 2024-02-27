@@ -69,9 +69,17 @@ selectTestGroup = function(test_code, group_caption) {
 };
 
 // Use this to select response options within a single- or multiple-select test question
-function selectResponseOptions(test_header_code, question_code, attribute = null, value = null) {
-    let question = $(Form.getTestQuestionByCode(test_header_code, question_code).getField());
-    return question.children(!(attribute || value) ? null : `:has([${attribute}=${value}])`)
+selectResponseOptions = function(test_header_code, question_code, attribute = null, value = null) {
+  return $(
+    Form.
+    getTestQuestionByCode(test_header_code, question_code).
+    getField()
+  ).
+  children(
+    !(attribute || value) ? 
+      null : 
+      `:has([${attribute}=${value}])`
+    )
 }
 ```
 
