@@ -59,7 +59,28 @@ Below are some notes on UI changes I have made using this launched form designer
 7. Add the three subreports indicated above
 8. When a form is opened in Form Designer, the subreports will indicate at a glance where and how the current form is used in the system.
    
-#### Event Definitions - insert a copy button and visibility on use in workflows
+#### Event Definitions - insert a copy button, unify the amend permission, and visibility on use in workflows
+1. Create a new virtual view subreport based on
+   - [Event Usage in Workflows](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Events%20Using%20a%20Specific%20Form.sql)
+| Column   | Format | Visible?| Join Field?| 
+| -------- | ------ | ------- | ---------- |
+| `event_use` | Regular String | Yes | No |
+| `workflow_grouping` | Regular String | Yes | No |
+| `workflow_caption` | Regular String | Yes | No |
+| `event_definition_id` | Foreign Key | No | Yes | 
+
+2. Navigate to Event Setup and open any event form
+3. Right-click on the main form (outside any subreport and outside the Security subform) and open the form designer
+4. Add a variable, formatted as a regular string or unique identifier.
+   - Mark the field as not visible
+   - Set the default value to `keyValue;`
+6. At the end of the form, add a new variable
+   - Format the variable as a Boolean field
+   - Add the script from [Copy Form Contents](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/JavaScript%20Functions/Copy%20Form%20Contents.md) to the On Click box
+7. Save the Form Design and return to the Event Setup form
+8. Right click on a worker role in Security for Event subform, and open the form designer
+9. Add a box for the Amend permission and mark the field as Visible on Subform
+
 
 #### Formset Maintenance - specify security access across all navigation schemes for a formset member
 
