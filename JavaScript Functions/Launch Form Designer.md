@@ -22,7 +22,43 @@ This script appears to work for any form in the system, including the Form Desig
 Below are some notes on UI changes I have made using this launched form designer:
 
 #### Form Designer - visibility on where a form is used
+1. Create three new virtual view subreports based on
+   - [Events Using a Specific Form](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Events%20Using%20a%20Specific%20Form.sql)
 
+| Column   | Format | Visible?| Join Field?| 
+| -------- | ------ | ------- | ---------- |
+| `category_name` | Regular String | Yes | No |
+| `event_name` | Regular String | Yes | No |
+| `form_header_id` | Foreign Key | No | Yes |
+
+   - [Navigation Tabs Using a Specific Form](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Formset%20Members%20Using%20a%20Form.sql)
+
+| Column   | Format | Visible?| Join Field?| 
+| -------- | ------ | ------- | ---------- |
+| `breadcrumb` | Regular String | Yes | No |
+| `form_header_id` | Foreign Key | No | Yes |
+     
+   - Form Usage as a Subform (virtual view based on `form_view`)
+
+| Column   | Format | Visible?| Join Field?| 
+| -------- | ------ | ------- | ---------- |
+| `form_family_name` | Regular String | Yes | No |
+| `form_name` | Regular String | Yes | No |
+| `sub_form_header_id` | Foreign Key | No | Yes | 
+
+*All the above subreports join to the parent form on `form_header_id`*
+     
+2. Navigate to Form Designer, and open any form.
+3. Open the form header section for the form (before the form lines)
+4. Right-click the expanded form_header and click Inspect
+5. Navigate to the Console in the Developer Tools pane and enter the launching script above
+6. Add a new variable to the form.
+   - Name the variable form_header_id.
+   - Set the default value to `keyValue;`
+   - Mark the variable as not visible
+7. Add the three subreports indicated above
+8. When a form is opened in Form Designer, the subreports will indicate at a glance where and how the current form is used in the system.
+   
 #### Event Definitions - insert a copy button and visibility on use in workflows
 
 #### Formset Maintenance - specify security access across all navigation schemes for a formset member
