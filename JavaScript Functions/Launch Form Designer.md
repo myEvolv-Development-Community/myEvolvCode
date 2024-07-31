@@ -62,7 +62,7 @@ Below are some notes on UI changes I have made using this launched form designer
 #### Event Definitions - insert a copy button, unify the amend permission, and visibility on use in workflows
 1. Create a new virtual view subreport based on
    - [Event Usage in Workflows](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Events%20Using%20a%20Specific%20Form.sql)
-   - 
+     
 | Column   | Format | Visible?| Join Field?| 
 | -------- | ------ | ------- | ---------- |
 | `event_use` | Regular String | Yes | No |
