@@ -100,6 +100,8 @@ Below are some notes on UI changes I have made using this launched form designer
 4. Navigate to the Console in the Developer Tools pane and enter the code at the top of this page
 5. In the Form Designer, open the NX Test Setup Answers (NR) in the right pane (P2 column), so that NX Test Setup Answers is still open in the left pane
 6. Drag the Default Value field from NX Test Setup Answers (NR) into NX Test Setup Answers
-8. Save the form design and close the tab
-9. Reload the test design and the default value column should appear in the Answers subform
-    - To make an option default to checked, expand the subform row for the answer option and type `true` in the Default Value box.
+7. Mark the Default Value field as Visible on Subform
+8. In the Console, enter `setFormElement("type_code", "L")` to format the field as a checkbox
+9. Save the form design and close the tab
+10. Reload the test design and the default value column should appear in the Answers subform
+    - To make an option default to checked check the Default Value box (or expand the subform row for the answer option and type `true` in the Default Value box if it is still formatted as a Remarks field).
