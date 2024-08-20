@@ -74,13 +74,27 @@ function findSubformRow(subform, booleanFunction) {
   return subform.sfValue[rowIndex]
 }
 
+function fetchSubformRows(subform, booleanFunction, action = "find") {
+  return subform // Look in the specified subform
+    .sfValue
+      [action.toLowerCase()](x => // set action to "find" to pull the first matching row, or "filter" to get a subset of rows
+        booleanFunction(
+            x
+            .FormLines
+            .reduce(
+                (a, b) => (a[b.columnName] = b.value ? b.value : b.lutValue,  a), 
+                {parentValue:x.parentValue, keyValue:x.keyValue}
+            )
+        )
+    );
+}
+
 function commitSubformChange(subform, subformRow) {
   subform.isDirty = true
   subform.subFormHasData = true
   subformRow.isDirty = true
   subformRow.hasData = true
-  subformRow.subFormHasData = true
-  
+  subformRow.subFormHasData = true 
 }
 ```
 
