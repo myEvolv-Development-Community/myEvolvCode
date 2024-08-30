@@ -82,6 +82,7 @@ async function f1(n) {
       }
     )
 
+// If any subform on the new form is a driving line subform, ensure that the box to enable the added rows is checked.
     newWin.
       Form.
       getSubForms().
@@ -93,8 +94,6 @@ async function f1(n) {
         find('input:not([id])').
         trigger("click")
       )
-
-    newWin.$($("iframe", sf.GetField()).prop("contentDocument")).find(`tr input.dirty`).closest('tr').find('input:not([id])').trigger("click");
 
     Form.setFormElement("event_name", getFormElement("event_name") + " " + new Date().toISOString().slice(0, 10));
 
