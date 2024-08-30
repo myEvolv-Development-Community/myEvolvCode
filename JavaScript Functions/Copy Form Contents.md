@@ -82,6 +82,20 @@ async function f1(n) {
       }
     )
 
+    newWin.
+      Form.
+      getSubForms().
+      forEach(sf =>
+        newWin.
+        $($("iframe", sf.GetField()).prop("contentDocument")).
+        find(`tr input.dirty`).
+        closest('tr').
+        find('input:not([id])').
+        trigger("click")
+      )
+
+    newWin.$($("iframe", sf.GetField()).prop("contentDocument")).find(`tr input.dirty`).closest('tr').find('input:not([id])').trigger("click");
+
     Form.setFormElement("event_name", getFormElement("event_name") + " " + new Date().toISOString().slice(0, 10));
 
     newWin.Form.setFormElement("event_name", newWin.getFormElement("event_name") + " - copy")
