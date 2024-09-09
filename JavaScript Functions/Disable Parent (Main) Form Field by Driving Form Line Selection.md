@@ -9,27 +9,26 @@ let field_to_disable = /*Column name of the field on the parent form to disable*
 let row_with_caption = $(`tr:has(:contains(${caption_to_find}))`);
 let checkbox = "input:not([id])";
 
-function disableInMainForm(triggeringElement, disabledElement) {
+function disableInMainForm(triggeringElement, disabledElement, negate = false) {
+  let result = $(triggeringElement). // Call back to the element which owns this on click listener
+        prop("checked"); // Whether or not the box is checked
+  result = negate ? !result : result; // if negate == true, then disable if the row is unchecked and disable if checked
   parent.  // Look up to the main page holding the subform
     Form.  // From the Form object on the parent form
     setDisabled(  // Apply a disable rule...
       disabledElement, // to the field we indicated above
-      (!( // Negate the following result, so checked => false and unchecked => true
-        $(triggeringElement). // Call back to the element which owns this on click listener
-        prop("checked") // Whether or not the box is checked
-      )).
-      toString() // convert Boolean result to a string reading 'true' or 'false'
+      result.toString()// convert Boolean result to a string reading 'true' or 'false'
     );
   }
 
 row_with_caption. // find a subform row that has a field which contains the displayed text we want to find
   find(checkbox). // The driving line checkbox is a checkbox input without an ID value
   on("click", function () { // When the checkbox is clicked...
-    disableInMainForm(this, field_to_disable);
+    disableInMainForm(this, field_to_disable, true);
     }
   );
 
-disableInMainForm(row_with_caption.find(checkbox), field_to_disable);
+disableInMainForm(row_with_caption.find(checkbox), field_to_disable, true);
 ```
 ### Function Arguments
 |Argument       |Definition |Data Type|
