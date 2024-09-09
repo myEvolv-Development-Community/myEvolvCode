@@ -24,11 +24,11 @@ function disableInMainForm(triggeringElement, disabledElement, negate = false) {
 row_with_caption. // find a subform row that has a field which contains the displayed text we want to find
   find(checkbox). // The driving line checkbox is a checkbox input without an ID value
   on("click", function () { // When the checkbox is clicked...
-    disableInMainForm(this, field_to_disable, true);
+    disableInMainForm(this, field_to_disable);
     }
   );
 
-disableInMainForm(row_with_caption.find(checkbox), field_to_disable, true);
+disableInMainForm(row_with_caption.find(checkbox), field_to_disable);
 ```
 ### Function Arguments
 |Argument       |Definition |Data Type|
