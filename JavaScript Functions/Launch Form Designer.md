@@ -3,7 +3,7 @@ Launch the form designer for any form in the system.
 
 ### Code to Do It:
 ```javascript
-window.open(`https://${Form.formObject.serverHandling||window.parent.Form.formObject.serverHandling}/FormDesigner.aspx?parent_value=${Form.formObject.formFamilyId}&form_family_id=${getDataValue("form_family", "form_family_name", 'Form Designer', 'form_family_id')}&fdmode=DEV&keyValue=${Form.formObject.formHeaderId||getDataValue("form_header", "form_code", Form.formObject.formCode, 'form_header_id')}#!`)
+openRadWindow('',`https://${Form.formObject.serverHandling||window.parent.Form.formObject.serverHandling}/FormDesigner.aspx?parent_value=${Form.formObject.formFamilyId}&form_family_id=${getDataValue("form_family", "form_family_name", 'Form Designer', 'form_family_id')}&fdmode=DEV&keyValue=${Form.formObject.formHeaderId||getDataValue("form_header", "form_code", Form.formObject.formCode, 'form_header_id')}#!`)
 ```
 
 ### Implementation Details
