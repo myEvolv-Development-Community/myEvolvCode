@@ -1,0 +1,2 @@
+// Put this in a form's After Load slot to force all subreports on the form to load without scrolling past them, so they are included in the printed form.
+Form.LoadSubReports();
