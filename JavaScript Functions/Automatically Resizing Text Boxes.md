@@ -25,8 +25,8 @@ Form.
 document.
   querySelectorAll("textarea").
   forEach(el => {
-    el.style.height = el.scrollHeight + 'px';
     el.addEventListener('input', function () {
+      el.style.height = el.scrollHeight + 'px';
       this.classList.remove("auto-height");
       this.style.height = 'auto';
       this.style.height = this.scrollHeight + 'px';
