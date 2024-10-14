@@ -24,13 +24,15 @@ Form.
 // Use this to apply auto-resizing to all narrative and remarks fields on the form at once.
 document.
   querySelectorAll("textarea").
-  forEach(el => el.addEventListener('input', function () {
+  forEach(el => {
     el.style.height = el.scrollHeight + 'px';
-    this.classList.remove("auto-height");
-    this.style.height = 'auto';;
-    this.style.height = this.scrollHeight + 'px';
+    el.addEventListener('input', function () {
+      this.classList.remove("auto-height");
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
     }, false)
-  );
+  )
+)
 ```
 
 ### Implementation Details
