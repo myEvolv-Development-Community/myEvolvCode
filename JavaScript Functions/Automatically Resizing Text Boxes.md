@@ -37,7 +37,38 @@ document.
 
 ### Implementation Details
 1. Put the desired code in the form's After Load slot or a specific field's On Load slot.
+2. In order to appropriately re-size text boxes while the form is loading, it may be necessary to use a MutationObserver to watch for the form's loading overlay to disappear before attempting to determine text box heights.
 
+
+```js
+var observer = new MutationObserver(function (mutations, me) {
+  // `mutations` is an array of mutations that occurred 
+  // `me` is the MutationObserver instance 
+  if (!document.querySelector(".blockUI")) { // Run the following if the form loading overlay is gone
+    document.
+      querySelectorAll("textarea").
+      forEach(el => {
+        el.style.height = el.scrollHeight + 'px'; // immediately resize text boxes
+        el.addEventListener('input', function () { // set text boxes to adjust with changes
+          this.classList.remove("auto-height")
+          this.style.height = 'auto';
+          this.style.height = this.scrollHeight + 'px';
+          }, false)
+        }
+      );
+    me.disconnect(); // stop observing. Otherwise, the observer will keep watching and executing infinitely
+    return; 
+    } 
+  }
+);
+
+// start observing
+observer.observe(document, {
+    childList: true,
+    subtree: true
+  }
+);
+```
    
 ### End-User Details
 Each text box should maintain a default minimum size (about 5 lines of text), but if the text entered into the box exceeds the minimum height, the box will grow to fit and shrink if text is removed.
