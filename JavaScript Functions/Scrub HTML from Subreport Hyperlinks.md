@@ -12,9 +12,9 @@ function handleSubreport(subreport) {
   subreport
     .columns
     .flatMap((column, index) => memos = column.type_code == 'M' ? index : [])
-    .map(column_index => 
+    .forEach(column_index => 
       report_rows
-      .map(row => 
+      .forEach(row => 
         row[column_index]
         .Value = row[column_index]
         .Value
