@@ -75,13 +75,19 @@ Form.RefreshSubreport = (
 
 
 ### Implementation Details
-1. This can be pasted directly into the form's After Load code slot
+1. This can be pasted directly into the form's After Load code slot, possibly with no modifications.
 
 ### End-User Details
-Here is where I explain what end users should see if everything works.
+This is intended to be used with [virtual view subreports that contain hyperlinks](https://github.com/myEvolv-Development-Community/myEvolvCode/blob/main/SQL%20Views/Hyperlink%20to%20Editable%20Form%20(View).md), but could be used to remove any HTML tags from subreport memo columns (e.g., tags to make text *italic* or **bold**).
 
-## Credits:
-Acknowledge specific creators if known.
+Subreports with columnd formatted as "Memo" fields will honor HTML formatting instructions included in the content of the field. In the example below, the Event column includes hyperlinks (`<a>` tags) which open an editable form when clicked.
 
-### To-Do
-If there is a known issue or edge case still to work out, describe it here.
+![Subreport with Embedded Hyperlinks](assets/images/HTML%20Scrubbing%201.png)
+
+However, when printed, the HTML formatting is printed as plain text and no longer interpreted, resulting in a very ugly presentation.
+
+![Subreport with Embedded Hyperlinks](assets/images/HTML%20Scrubbing%202.png)
+
+After implementing the above code, the HTML formatting tags will be removed from the print view, but the hyperlink will remain in the editable form.
+
+![Subreport with Embedded Hyperlinks](assets/images/HTML%20Scrubbing%203.png)
