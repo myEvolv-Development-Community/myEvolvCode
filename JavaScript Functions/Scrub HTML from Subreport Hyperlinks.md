@@ -72,18 +72,10 @@ Form.RefreshSubreport = (
   }
 )();
 ```
-### Function Arguments
-|Argument       |Definition |Data Type|
-|---            |---        |---      |
-|first argument |The meaning of this input to the function|The type of data expected to go into the argument.|
-|second argument|Tell what this argument should represent.|Default values should be mentioned here.|
-|third argument |We should be able to clearly name each argument and define its use in a single sentence.|If an argument can take a variety of types, describe more fully in the implementation details.|
 
 
 ### Implementation Details
-1. Step 1
-2. Step 2
-3. Step 3
+1. This can be pasted directly into the form's After Load code slot
 
 ### End-User Details
 Here is where I explain what end users should see if everything works.
