@@ -84,7 +84,7 @@ Subreports with columnd formatted as "Memo" fields will honor HTML formatting in
 
 ![Subreport with Embedded Hyperlinks](assets/images/HTML%20Scrubbing%201.png)
 
-However, when printed, the HTML formatting is printed as plain text and no longer interpreted, resulting in a very ugly presentation.
+However, when printed, the hyperlink is printed as plain text, resulting in a very ugly presentation.
 
 ![Subreport with Embedded Hyperlinks](assets/images/HTML%20Scrubbing%202.png)
 
