@@ -29,5 +29,32 @@ Can be used in either a custom report launched from the Reports module or in a v
 
 Be aware that this view does not include any restrictions based on worker permissions, and could theoretically bypass a worker's role security, allowing edits or deletions where these actions would not normally be permitted.
 
+Alternatively, we can modify the hyperlink to open as a nested myEvolv window using the following specification. The Memo formatting would still be needed.
+
+```sql
+concat(
+  '<a href="#" onclick="OpenFormGeneric( 
+    `eventform.asp`, //aspx file to use, defaults to Form.aspx
+    `',form_code,'`, //form code 
+    `',event_log_id,'`, //keyValue
+    `EDIT`, //add, edit, or view mode
+    true, //allow add? boolean
+    true, //allow edit? boolean
+    false, //allow delete? boolean
+    false, 
+    `',event_definition.event_definition_id,'`, // event definition id 
+    `',people_id,'`, //parentValue
+    `',service_track_event_id,'`, 
+    null, 
+    `',program_providing_service,'`, //program providing service
+    `',program_enrollment_event_id,'`, //program enrollment id
+    null, 
+    false //does this complete a scheduled event? boolean
+    );
+    return false;">',
+  event_definition.event_name, ': ', event_log.actual_date,
+  '</a>') as hyperlink
+```
+
 ### Example Output
 Should look like a hyperlinked subreport, but the form that opens will be editable.
