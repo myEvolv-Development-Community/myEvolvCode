@@ -27,7 +27,7 @@ Subforms, as their name implies, are forms embedded within a parent form. Each s
 For example, consider the following subform of referral statuses.
 
 
-![A subform of referral statuses. Two statuses are accepted, others pending, and one is withdrawn.](How-To%20Guides/assets/images/Subform%20Example.png "A subform of referral statuses. Some statuses are accepted, others pending, and one is withdrawn.")
+![A subform of referral statuses. Two statuses are accepted, others pending, and one is withdrawn.](/How-To%20Guides/assets/images/Subform%20Example.png "A subform of referral statuses. Some statuses are accepted, others pending, and one is withdrawn.")
 
 This client was referred to a program with an initial Pending status and was later Accepted. The referral was withdrawn when the client did not show for the initial appointnment. The following week, the client asked for a new appointment and the status changed to Pending again, and later finally Accepted.
 
@@ -74,7 +74,7 @@ Form.getFormLineByCaption("Status of the Referral")
 
 Although Treatment Plans look more like typical forms, they actually share a key commonality with subforms in that both contain collections of forms. In Treatment Plans, each component is a form, and the components are listed out in the navigation list on the left side of the window.
 
-![A list of Treatment Plan components, including Information, Completed Information, Current Disposition, Goals, Objectives, and Interventions. Information is highlighted in green and Completed Information is highlighted in orange.](How-To%20Guides/assets/images/Treatment%20Plan%20Component%20List.png "A list of Treatment Plan components, including Information, Completed Information, Current Disposition, Goals, Objectives, and Interventions. Information is highlighted in green and Completed Information is highlighted in orange.")
+![A list of Treatment Plan components, including Information, Completed Information, Current Disposition, Goals, Objectives, and Interventions. Information is highlighted in green and Completed Information is highlighted in orange.](/How-To%20Guides/assets/images/Treatment%20Plan%20Component%20List.png "A list of Treatment Plan components, including Information, Completed Information, Current Disposition, Goals, Objectives, and Interventions. Information is highlighted in green and Completed Information is highlighted in orange.")
 
 Each component is held in an array that can be accessed by calling `parent.TreeView`. Each entry in `parent.TreeView` may contain a form object under `Parameters.FormObject`.
 
