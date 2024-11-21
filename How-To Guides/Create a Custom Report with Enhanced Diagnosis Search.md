@@ -51,4 +51,4 @@ Move the `Diagnosis_Search_Term` to the top of the parameter list (to guarantee 
 
 Set the `is_Diagnosis_Included` parameter to use the "Equal To" operator, give it a default value of 1, and check "Is Used" and "Use And" (it can remain not visible and not modifiable).
 
-Save the custom report and the diagnosis search field should appear before running t
+Save the custom report and the diagnosis search field should appear as a text entry box when the report is run.
