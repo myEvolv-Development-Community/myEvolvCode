@@ -1,0 +1,3 @@
+if (formMode == "ADD"){
+     setFormElement('actual_date', null)
+}
