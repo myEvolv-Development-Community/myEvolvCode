@@ -1,0 +1,83 @@
+### What You Want to Do:
+View expected billing rates for services by service details including program prodiving service.
+
+
+### View Definition
+```sql
+select
+program_info.program_name,
+program_info.program_info_id,
+(select event_name from event_definition where event_definition.event_definition_id = agency_program_service_link.event_definition_id)
+payor_vendor.vendor_name,
+payor_vendor.is_self_pay,
+billing_payment_plan.plan_name,
+billing_payment_plan_scheme_link.is_all_pe_modifiers,
+(select description from program_modifier where program_modifier.program_modifier_id = billing_payment_plan_scheme_link.program_modifier_id) as program_modifier,
+billing_payment_plan_scheme_link.is_all_managing_offices,
+(select profile_name from group_profile where group_profile.group_profile_id = billing_payment_plan_scheme_link.managing_office_id) as managing_office,
+(select program_unit.[description] from program_unit where program_unit.program_unit_id = billing_payment_plan_scheme_link.program_unit_override) as program_unit_override,
+(select cost_center.cost_center_description from cost_center where cost_center.cost_center_id = billing_payment_plan_scheme_link.income_cost_center) as income_cost_center,
+rate_header.rate_name,
+rate_header.rate_code,
+rate_header.is_EM,
+rate_details.from_age,
+rate_details.to_age,
+rate_details.maximum_time,
+rate_details.minimum_time,
+rate_details.no_show,
+(select reason_for_no_show.[description] from reason_for_no_show where reason_for_no_show.reason_for_no_show_id =  rate_details.reason_for_no_show_id) as reason_for_no_show,
+rate_details.is_telehealth,
+rate_details.is_delivered_other_language,
+rate_details.is_off_site,
+rate_details.agency_rate,
+rate_details.amount_charged,
+rate_details.amount_expected,
+(select modifiers.description from modifiers where modifiers.modifiers_id = rate_details.modifier1) as modifier1,
+(select modifiers.description from modifiers where modifiers.modifiers_id = rate_details.modifier2) as modifier2,
+(select modifiers.description from modifiers where modifiers.modifiers_id = rate_details.modifier3) as modifier3,
+(select modifiers.description from modifiers where modifiers.modifiers_id = rate_details.modifier4) as modifier4,
+(select modifiers.description from modifiers where modifiers.modifiers_id = rate_details.addit_serv_modifier) as addit_serv_modifier,
+rate_details.rate_code_override,
+rate_details.revenue_code_override,
+time_chart_header.[description] as time_chart_description,
+time_chart_header.increment_start_from,
+time_chart_header.time_increment,
+time_chart_header.unit_increment,
+time_chart_header.max_units,
+stuff((
+select '; ' + cast(start_time as varchar) + ' min to ' + cast(end_time as varchar) + ' min: ' + cast(unit_number as varchar) + ' points'
+from time_chart_details
+where time_chart_details.time_chart_header_id = time_chart_header.time_chart_header_id
+order by time_chart_details.start_time asc
+FOR XML PATH ('')
+), 1, 2, '') as time_bands,
+agency_program_link.agency_program_link_id,
+billing_payment_scheme_setup.billing_payment_scheme_setup_id,
+billing_payment_plan_scheme_link.billing_payment_plan_scheme_link_id,
+billing_payment_plan.billing_payment_plan_id,
+payor_vendor.payor_vendor_id,
+rate_header.rate_header_id,
+rate_plan_link_history.rate_plan_link_history_id,
+rate_plan_link_details.rate_plan_link_details_id,
+rate_details.rate_details_id,
+time_chart_header.time_chart_header_id,
+agency_program_service_link.event_definition_id
+from program_info
+inner join agency_program_link on program_info.program_info_id = agency_program_link.program_info_id
+inner join agency_program_service_link on agency_program_link.agency_program_link_id = agency_program_service_link.agency_program_link
+inner join billing_payment_scheme_setup on agency_program_service_link.agency_program_service_link_id = billing_payment_scheme_setup.agency_program_service_link_id
+inner join billing_payment_plan_scheme_link on billing_payment_plan_scheme_link.billing_payment_scheme_setup_id = billing_payment_scheme_setup.billing_payment_scheme_setup_id
+inner join billing_payment_plan on billing_payment_plan_scheme_link.billing_payment_plan_id = billing_payment_plan.billing_payment_plan_id
+inner join payor_vendor on billing_payment_plan.payor_vendor_id = payor_vendor.payor_vendor_id
+inner join rate_header on payor_vendor.payor_vendor_id = rate_header.payor_vendor_id
+inner join rate_plan_link_history on rate_header.rate_header_id = rate_plan_link_history.rate_header_id
+inner join rate_plan_link_details on rate_plan_link_details.rate_plan_link_history_id = rate_plan_link_history.rate_plan_link_history_id
+inner join rate_details on rate_plan_link_history.rate_plan_link_history_id = rate_details.rate_plan_link_history_id
+inner join time_chart_header on rate_plan_link_history.time_chart_header_id = time_chart_header.time_chart_header_id
+where rate_plan_link_details.billing_payment_plan_id = billing_payment_plan.billing_payment_plan_id
+and billing_payment_plan.is_active = 1
+and isnull(rate_plan_link_history.end_date, '9999-12-31') > getdate()
+```
+
+### Other Details
+Returns a lot of data. Best to run for one program at a time.
