@@ -2,7 +2,7 @@
 There will probably get to a point in your myEvolv development where you end up having the same function copied and pasted to many different places in your system. Or, maybe you have a cheatsheet of codes you use in many places. The problem with this is when you have to make changes to the code, you'd have to go through every form and update each one individually - which is time consuming, to say the least.
 
 ## What You Want to Do:
-Our solution is the DRY principle, or "Don't Repeat Yourself." The DRY principle emphasizes the idea of reusability and aims to reduce repitition in code, and results in you only having to makes changes in one place instead of several.
+Our solution is the DRY principle, or "Don't Repeat Yourself." The DRY principle emphasizes the idea of reusability and aims to reduce repetition in code, and results in you only having to makes changes in one place instead of several.
 
 ## How to do this, step-by-step:
 1. Create an obscure form somewhere.
