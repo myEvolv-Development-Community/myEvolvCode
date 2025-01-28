@@ -127,7 +127,7 @@ parent
 
 The results of these operations can also be filtered or subsetted using `find`, `filter`, and indexes (e.g., `[0]`).
 
-### To-Do
+## To-Do
 Fully explore how to set elements in subforms and treatment plan components using Netsmart-providing functions.
 
 `Form.setFormLineValue` takes three arguments: a `formObject`, a column name, and a new value for the column in the form.
@@ -139,6 +139,9 @@ let fakeFormObject = {FormLines : [{'columnName' : 'fake_column', 'value': 'fake
 Form.setFormLineValue(fakeFormObject, "fake_column", 'new fake value') // yields 'fake output'
 getFormElement("fake_column", fakeFormObject) // yields 'new fake value'
 ```
+
+### Update Values in a Subform
+
 Returning to the subform example from above, we can find and update one cell in a subform as follows:
 
 ```js
@@ -153,6 +156,8 @@ DirtyFormField._defaultChangeDetector(referral_status.sfValue[0].FormLines.find(
 referral_status.RefreshGrid() // Refresh the display of the subform so the change is visible
 ```
 
+### Update Values in a Treatment Plan Component
+
 With our treatment plan example, we could do something like
 
 ```js
@@ -164,3 +169,17 @@ DirtyFormField._defaultChangeDetector(completed_information.FormLines.find(fl =>
 to update the end date field on a plan component called "Completed Information"
 
 Note that the updated value will not appear until the component is reloaded (by navigating to the component again through the components list).
+
+### Add a New Row to a Subform
+
+Adding new entries to a subform will require a combination of `setFormLineValue` and `getFormElement` because if we add more than one entry to the subform, we will need a way to distinguish between a 'new'
+row with some data already inserted and a 'new' row without data.
+
+```js
+let referral_status = Form.getFormLineByCaption("Status of the Referral") // Save the subform as a variable because we will reference it multiple times
+Form.setFormLineValue(referral_status.sfValue.find(row => row.formMode == 'ADD'), 'actual_date', '2025/01/01 11:00:00') // Add first new row, by finding row with 'ADD' mode
+DirtyFormField._defaultChangeDetector(referral_status.sfValue.find(row => row.formMode == 'ADD') && getFormElement('actual_date', row) == '2025/01/01 11:00:00').FormLines.find(fl => fl.columnName == 'actual_date')) // Mark the cell we changed as 'dirty' so the new value will be saved
+Form.setFormLineValue(referral_status.sfValue.find(row => row.formMode == 'ADD') && !getFormElement('actual_date', row)), 'actual_date', '2025/01/01 12:00:00') // Add second new row, by finding row with 'ADD' mode
+DirtyFormField._defaultChangeDetector(referral_status.sfValue.find(row => row.formMode == 'ADD') && getFormElement('actual_date', row) == '2025/01/01 12:00:00').FormLines.find(fl => fl.columnName == 'actual_date')) // Mark the cell we changed as 'dirty' so the new value will be saved
+referral_status.RefreshGrid() // Refresh the display of the subform so the change is visible
+```
