@@ -21,9 +21,7 @@ Specify parameters, special forms structures to implement
 
 
 ### Example Output
-| first_name | middle_name | last_name | nickname | record_type |
-| ---------- | ----------- | --------- | -------- | ----------- |
-| John       | Quincey     | Doe       | Johnny   | person      |
+
 
 |description	|security_scheme_id	|form_set_members_id	|modules_id	|has_access	|add_allowed	|edit_allowed|	delete_allowed|	module_name	|sub_module_name|	set_name|	tab_caption|
 | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
