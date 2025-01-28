@@ -179,7 +179,8 @@ row with some data already inserted and a 'new' row without data.
 let referral_status = Form.getFormLineByCaption("Status of the Referral") // Save the subform as a variable because we will reference it multiple times
 Form.setFormLineValue(referral_status.sfValue.find(row => row.formMode == 'ADD'), 'actual_date', '2025/01/01 11:00:00') // Add first new row, by finding row with 'ADD' mode
 DirtyFormField._defaultChangeDetector(referral_status.sfValue.find(row => row.formMode == 'ADD') && getFormElement('actual_date', row) == '2025/01/01 11:00:00').FormLines.find(fl => fl.columnName == 'actual_date')) // Mark the cell we changed as 'dirty' so the new value will be saved
-Form.setFormLineValue(referral_status.sfValue.find(row => row.formMode == 'ADD') && !getFormElement('actual_date', row)), 'actual_date', '2025/01/01 12:00:00') // Add second new row, by finding row with 'ADD' mode
+Form.setFormLineValue(referral_status.sfValue.find(row => row.formMode == 'ADD') && !getFormElement('actual_date', row)), 'actual_date', '2025/01/01 12:00:00') // Add second new row, by finding row with 'ADD' mode, but does not yet have an actual date
+// If we add more rows, we will want to find a row in ADD mode with the actual date we want to update
 DirtyFormField._defaultChangeDetector(referral_status.sfValue.find(row => row.formMode == 'ADD') && getFormElement('actual_date', row) == '2025/01/01 12:00:00').FormLines.find(fl => fl.columnName == 'actual_date')) // Mark the cell we changed as 'dirty' so the new value will be saved
 referral_status.RefreshGrid() // Refresh the display of the subform so the change is visible
 ```
