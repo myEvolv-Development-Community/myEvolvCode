@@ -153,3 +153,14 @@ DirtyFormField._defaultChangeDetector(referral_status.sfValue[0].FormLines.find(
 referral_status.RefreshGrid() // Refresh the display of the subform so the change is visible
 ```
 
+With our treatment plan example, we could do something like
+
+```js
+let completed_information = parent.TreeView.find(component => component.Caption == "Completed Information").Parameters.FormObject //Find a plan component and its associated form
+Form.setFormLineValue(completed_information, "end_date",'2025/01/01 11:00:00') // Update the end date on that component
+DirtyFormField._defaultChangeDetector(completed_information.FormLines.find(fl => fl.columnName == 'end_date')) // Mark the end date as dirty so the new value saves
+```
+
+to update the end date field on a plan component called "Completed Information"
+
+Note that the updated value will not appear until the component is reloaded (by navigating to the component again through the components list).
