@@ -126,3 +126,30 @@ parent
 ```
 
 The results of these operations can also be filtered or subsetted using `find`, `filter`, and indexes (e.g., `[0]`).
+
+### To-Do
+Fully explore how to set elements in subforms and treatment plan components using Netsmart-providing functions.
+
+`Form.setFormLineValue` takes three arguments: a `formObject`, a column name, and a new value for the column in the form.
+
+Therefore,  
+
+```js
+let fakeFormObject = {FormLines : [{'columnName' : 'fake_column', 'value': 'fake output'}]}
+Form.setFormLineValue(fakeFormObject, "fake_column", 'new fake value') // yields 'fake output'
+getFormElement("fake_column", fakeFormObject) // yields 'new fake value'
+```
+Returning to the subform example from above, we can find and update one cell in a subform as follows:
+
+```js
+let referral_status = Form.getFormLineByCaption("Status of the Referral") // Save the subform as a variable because we will reference it multiple times
+let accepted = getDataValue("oc_status", "description", "Accepted", "oc_status_id").toLowerCase() // Find the GUID associated with an Accepted status. Done here so we only run getDataValue once
+let queryFunction = row => getFormElement("oc_status_id", row).toLowerCase() == accepted // Define a function that tests whether the status of each row is Accepted
+let acceptedRow =referral_status // Find one row with an Accepted status
+  .sfValue
+  .find(queryFunction)
+Form.setFormLineValue(acceptedRow, "actual_date", '2025/01/01 10:00:00'); // change the date/time on the row with an accepted status
+DirtyFormField._defaultChangeDetector(referral_status.sfValue[0].FormLines.find(fl => fl.columnName == 'actual_date')) // Mark the cell we changed as 'dirty' so the new value will be saved
+referral_status.RefreshGrid() // Refresh the display of the subform so the change is visible
+```
+
