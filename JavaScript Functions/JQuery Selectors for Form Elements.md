@@ -81,6 +81,9 @@ selectResponseOptions = function(test_header_code, question_code, attribute = nu
       `:has([${attribute}=${value}])`
     )
 }
+
+// Use this to select the client information header at the top of forms
+$(".details_big").contents()
 ```
 
 ### End-User Details
