@@ -37,16 +37,3 @@ disableInMainForm(row_with_caption.find(checkbox), field_to_disable);
 |disabledElement|The element in the parent form to be disabled|
 
 
-### Implementation Details
-1. Step 1
-2. Step 2
-3. Step 3
-
-### End-User Details
-Here is where I explain what end users should see if everything works.
-
-## Credits:
-Acknowledge specific creators if known.
-
-### To-Do
-If there is a known issue or edge case still to work out, describe it here.
