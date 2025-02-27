@@ -12,7 +12,7 @@ This is an example of a stored procedure that I wrote for a cusotm widget- EL
 /***************************************
 *	Author: Elise Labatore
 *	Date: 09/25/2024
-*	ADO-12880 SDOH Incident Report Action Engine
+*	ADO-12880 Incident Report Action Engine
 ****************************************/
 As
 Set NoCount On
