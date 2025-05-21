@@ -1,0 +1,27 @@
+--Query that will return your service bundles setup with the program and service information for each item setup in the bundle.
+
+select 
+pv.vendor_name as payor_name,
+bpp.plan_name, 
+bsb.service_bundle_name,
+bppsl.disp_expr as detail_description,
+bppsl.program_name,
+bppsl.event_name,
+bppsl.program_modifier,
+bppsl.managing_office_name,
+bppsl.rate_name,
+rh.rate_code
+
+from billing_payment_plan_scheme_link_view bppsl
+	join billing_service_bundle_service_link bsbsl on
+		bsbsl.billing_payment_plan_scheme_link_id = bppsl.billing_payment_plan_scheme_link_id
+	join billing_service_bundle bsb on
+		bsbsl.billing_service_bundle_id = bsb.billing_service_bundle_id
+	join billing_payment_plan bpp on
+		bsb.billing_payment_plan_id = bpp.billing_payment_plan_id
+	JOIN payor_vendor pv on
+		bpp.payor_vendor_id = pv.payor_vendor_id
+	join rate_header rh on 
+		bppsl.rate_header_id = rh.rate_header_id
+
+Order by 1, 2, 3
