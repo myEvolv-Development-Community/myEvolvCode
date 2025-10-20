@@ -152,8 +152,8 @@ if (isSensitive && !isAuthor && !isAuthorSup && !isAdmin) {
 <video controls autoplay loop src="assets/images/sens_step2_done.mp4" title="Title"></video>
 
 ### 10. Improvements
-You could consider making things pretty with colors and other UI elements to really embolden that positive feedback loop for the user. I also suggest implementing the sensitive code into a <a href="How-To Guides/Make a DRY Function Library.md" target="_blank">DRY Library</a> to avoid repetition.
+You could consider making things pretty with colors and other UI elements to really embolden that positive feedback loop for the user. I also suggest implementing the sensitive code into a <a href="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/64e19b6bb5e275c8db53bcfab46d1f2e8ffce7b7/How-To%20Guides/Make%20a%20DRY%20Function%20Library.md" target="_blank">DRY Library</a> to avoid repetition.
 <video controls autoplay loop src="assets/images/sensitive_final_with_other_user.mp4" title="Title"></video>
 
 ## Final template that you can import into your system
-<a href="How-To Guides/assets/exports/sensitive_final_export.json" target="_blank">Click here to download the finished product.</a>
+<a href="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/64e19b6bb5e275c8db53bcfab46d1f2e8ffce7b7/How-To%20Guides/assets/exports/sensitive_final_export.json" target="_blank">Click here to download the finished product.</a>
