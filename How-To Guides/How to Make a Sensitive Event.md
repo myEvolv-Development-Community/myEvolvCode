@@ -1,7 +1,7 @@
 ## What You Want To Do:
 Sometimes events in myEvolv need added security because they contain sensitive information. This could include discussion of the client's HIV status, pregnancy, substance use, or really anything the clinician feels requires a high degree of discretion. This tutorial will show you how to add very simple functionality to your form to allow clinicians to mark something as sensitive, and then hide it from everyone else. Plus, this is completely customizable, so you can adjust this to your specific agency's needs.
 
-<video controls autoplay loop src="assets/images/sens_step2_done.mp4" title="Title"></video>
+<video controls autoplay loop src="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/35e5b4eb6c80e9175c798ff5b79913005c5c4d59/How-To%20Guides/assets/images/sens_step2_done.mp4" title="assets/images/sens_step2_done.mp4"></video>
 
 ## How to Do It:
 ### 1. Get the template
@@ -66,7 +66,7 @@ const isSensitive = isChecked('is_sensitive');
 We want to make sure we create a positive feedback loop for the user, so that the form responds to them clicking the `is_sensitive` checkbox. Something that says, "Hey, you just clicked this box. Here's what's about to happen."
 
 **Here are some possible positions for this message:**
-<video controls autoplay loop src="assets/images/append_positions.mp4" title="Title"></video>
+<video controls autoplay loop src="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/35e5b4eb6c80e9175c798ff5b79913005c5c4d59/How-To%20Guides/assets/images/append_positions.mp4" title="assets/images/append_positions.mp4"></video>
 
 ### 7. Consider the logic
 We need the form to behave in a certain way, and have different states for what it should do:
@@ -149,11 +149,11 @@ if (isSensitive && !isAuthor && !isAuthorSup && !isAdmin) {
 ```
 
 ### 9. Test
-<video controls autoplay loop src="assets/images/sens_step2_done.mp4" title="Title"></video>
+<video controls autoplay loop src="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/35e5b4eb6c80e9175c798ff5b79913005c5c4d59/How-To%20Guides/assets/images/sens_step2_done.mp4" title="assets/images/sens_step2_done.mp4"></video>
 
 ### 10. Improvements
 You could consider making things pretty with colors and other UI elements to really embolden that positive feedback loop for the user. I also suggest implementing the sensitive code into a <a href="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/64e19b6bb5e275c8db53bcfab46d1f2e8ffce7b7/How-To%20Guides/Make%20a%20DRY%20Function%20Library.md" target="_blank">DRY Library</a> to avoid repetition.
-<video controls autoplay loop src="assets/images/sensitive_final_with_other_user.mp4" title="Title"></video>
+<video controls autoplay loop src="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/35e5b4eb6c80e9175c798ff5b79913005c5c4d59/How-To%20Guides/assets/images/sensitive_final_with_other_user.mp4" title="Final"></video>
 
 ## Final template that you can import into your system
 <a href="https://github.com/myEvolv-Development-Community/myEvolvCode/blob/64e19b6bb5e275c8db53bcfab46d1f2e8ffce7b7/How-To%20Guides/assets/exports/sensitive_final_export.json" target="_blank">Click here to download the finished product.</a>
