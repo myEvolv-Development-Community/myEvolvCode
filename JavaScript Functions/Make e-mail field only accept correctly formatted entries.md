@@ -1,5 +1,5 @@
 ### What You Want to Do:
-This makes it so that only an etnry that is a valid e-maila address will be accpeted into a field. 
+This makes it so that only an entry that is a valid e-maila address will be accpeted into a field. 
 
 ### Code to Do It:
 ```javascript
