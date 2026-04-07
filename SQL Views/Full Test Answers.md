@@ -30,7 +30,7 @@ group_profile.profile_name as office_responsible,
 test_setup_header.test_header_name,
 test_group.test_setup_details_caption as question_group,
 test_group.test_setup_details_order as question_group_order,
-test_setup_details.test_setup_details_caption as question_caption
+test_setup_details.test_setup_details_caption as question_caption,
 test_setup_details.output_code as question_code,
 test_details_na_reason.description as na_reason,
 test_setup_details.test_setup_details_order as question_order,
